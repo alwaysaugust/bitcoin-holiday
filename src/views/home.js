@@ -6,7 +6,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 import { Colxx } from '../components/common/CustomBootstrap';
 import AppLayout from '../layout/AppLayout';
-import TopnavDarkSwitch from '../containers/navs/Topnav.DarkSwitch';
+import CalendarToolbar from '../containers/toolbar/CalendarToolbar';
 
 const Localizer = momentLocalizer(moment);
 const DragAndDropCalendar = withDragAndDrop(Calendar);
@@ -17,19 +17,21 @@ const Home = () => {
       <div className="dashboard-wrapper">
         <Row>
           <Colxx xxs="12">
-            <div className="my-3">
-              <TopnavDarkSwitch />
+            <div className="calendar-wrapper">
+              <DragAndDropCalendar
+                className=""
+                selectable
+                localizer={Localizer}
+                resizable
+                events={[]}
+                defaultView="month"
+                defaultDate={new Date()}
+                step={60}
+                components={{
+                  toolbar: CalendarToolbar,
+                }}
+              />
             </div>
-            <DragAndDropCalendar
-              className=""
-              selectable
-              localizer={Localizer}
-              resizable
-              events={[]}
-              defaultView="month"
-              defaultDate={new Date()}
-              step={60}
-            />
           </Colxx>
         </Row>
       </div>

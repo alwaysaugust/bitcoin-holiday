@@ -30,7 +30,7 @@ button {
 }
 
 .btn {
-  border-radius: 50px;
+  border-radius: 5px;
   outline: initial !important;
   box-shadow: none !important;
   box-shadow: initial !important;
@@ -123,8 +123,8 @@ button {
 .btn-primary:not(:disabled):not(.disabled):active,
 .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
-  background-color: darken($theme-color-1, 12%);
-  border-color: darken($theme-color-1, 12%);
+  background-color: $theme-color-1;
+  border-color: $theme-color-1;
   color: $button-text-color;
 }
 
@@ -582,4 +582,57 @@ button {
       margin-right: 5px;
     }
   }
+}
+
+.btn-share {
+  background: var(--theme-color-1);
+  width: 46px;
+  height: 45px;
+  padding: 0;
+  margin-left: 10px;
+
+  &:hover {
+    opacity: .8;
+  }
+}
+
+.btn-add-to-calendar {
+  background: var(--theme-color-1);
+  width: 149px;
+  height: 45px;
+  color: #fff;
+  padding: 0;
+  margin-left: 10px;
+
+  svg {
+    margin-right: 9px;
+  }
+  &:hover {
+    opacity: .8;
+    color: #fff;
+  }
+}
+
+.btn-grid-view, .btn-list-view {
+  height: 45px;
+  width: 46px;
+  padding: 0;
+  border: 2px solid var(--theme-color-1);
+  background: var(--main-bg-color);
+  color: var(--primary-color);
+
+  svg {
+    fill: var(--primary-color);
+  }
+
+  &.active {
+    svg {
+      fill: #fff;
+    }
+  }
+}
+
+
+.btn-group-toggle-view {
+  margin-left: 30px;
 }

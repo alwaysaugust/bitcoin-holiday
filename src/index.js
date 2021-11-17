@@ -5,13 +5,9 @@ import 'react-circular-progressbar/dist/styles.css';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'react-image-lightbox/style.css';
-import { getCurrentColor, setCurrentColor } from './helpers/Utils';
-
-const color = getCurrentColor();
-setCurrentColor(color);
 
 const render = () => {
-  import(`./assets/css/sass/themes/${color}.scss`).then(() => {
+  import(`./assets/css/sass/themes/theme.scss`).then(() => {
     require('./AppRenderer');
   });
 };

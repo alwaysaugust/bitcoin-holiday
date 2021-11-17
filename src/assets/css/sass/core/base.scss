@@ -4,34 +4,15 @@ html {
   background: $background-color;
 }
 
-:root {
-  --theme-color-1: #{$theme-color-1};
-  --theme-color-2: #{$theme-color-2};
-  --theme-color-3: #{$theme-color-3};
-  --theme-color-4: #{$theme-color-4};
-  --theme-color-5: #{$theme-color-5};
-  --theme-color-6: #{$theme-color-6};
-  --theme-color-1-10: #{rgba($theme-color-1, 0.1)};
-  --theme-color-2-10: #{rgba($theme-color-2, 0.1)};
-  --theme-color-3-10: #{rgba($theme-color-3, 0.1)};
-  --theme-color-4-10: #{rgba($theme-color-4, 0.1)};
-  --theme-color-5-10: #{rgba($theme-color-5, 0.1)};
-  --theme-color-6-10: #{rgba($theme-color-6, 0.1)};
-
-  --primary-color: #{$primary-color};
-  --foreground-color: #{$foreground-color};
-  --separator-color: #{$separator-color};
-}
-
 #root {
   height: 100%;
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.8rem;
   font-weight: 400;
-  color: $primary-color;
+  color: var(--primary-color);
   background: $background-color;
 
   &.background {
@@ -285,7 +266,7 @@ a {
 p {
   font-size: 0.85rem;
   line-height: 1.3rem;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .text-large {

@@ -3,6 +3,8 @@ $navbar-color: #000;
 
 $main-bg-color: #121212;
 
+$toolbar-text-color: #fff;
+
 $separator-color-light: #313131;
 $separator-color: #424242;
 $background-color: #F2F0EC;
@@ -13,14 +15,14 @@ $dark-btn-background: #8d8d8d;
 $light-btn-background: #e4e4e4;
 $button-text-color: #d0d0d0;
 
-$theme-color-1: #ad7140;
+$theme-color-1: #FD9A04;
 $theme-color-2: #aa4f43;
 $theme-color-3: #c4a688;
 $theme-color-4: #916948;
 $theme-color-5: #856f5a;
 $theme-color-6: #6e5e59;
 
-$primary-color: #8f8f8f;
+$primary-color: #fff;
 $secondary-color: #707070;
 $muted-color: #696969;
 
@@ -46,6 +48,5 @@ $logo-path-mobile: "/assets/logos/mobile.png";
 
 $lp-logo-path-pinned: "/assets/logos/white-full.png";
 $lp-logo-path: "/assets/logos/white-full.png";
-
 
 @import "../main.scss";

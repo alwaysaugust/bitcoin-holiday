@@ -9,27 +9,27 @@ const data = [
   {
     id: 'coldcard-wallet',
     label: 'nav.coldcard-wallet',
-    to: `https://google.com`,
+    to: `https://coldcard.com/`,
   },
   {
     id: 'blocklock',
     label: 'nav.blocklock',
-    to: `https://google.com`,
+    to: `https://blockclockmini.com/`,
   },
   {
     id: 'opendime',
     label: 'nav.opendime',
-    to: `https://google.com`,
+    to: `https://opendime.com/`,
   },
   {
     id: 'seedplate',
     label: 'nav.seedplate',
-    to: `https://google.com`,
+    to: `http://bitcoinseedbackup.com/`,
   },
   {
     id: 'coinkite-store',
     label: 'nav.coinkite-store',
-    to: `https://google.com`,
+    to: `https://store.coinkite.com/store`,
   },
 ];
 export default data;

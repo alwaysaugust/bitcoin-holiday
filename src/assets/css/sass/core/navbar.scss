@@ -1,11 +1,10 @@
 .navbar {
-  background: $navbar-bg-color;
+  background: var(--navbar-bg-color);
   height: $navbar-height;
-  color: $navbar-color;
+  color: var(--navbar-color);
   padding: 5px $body-x-padding;
   max-width: $body-width;
   margin: auto;
-
   @include depth(1);
 
   #notificationDropdown {
@@ -126,7 +125,7 @@
       padding: 1px 15px;
 
       a {
-        color: $navbar-color;
+        color: var(--navbar-color);
         font-weight: bold;
         font-size: .75rem;
 

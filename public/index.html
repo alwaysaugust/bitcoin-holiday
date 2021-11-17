@@ -27,6 +27,18 @@
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
+  <script>
+    var theme = "light";
+    try {
+      if (localStorage.getItem("__theme_selected_color")) {
+        theme = localStorage.getItem("__theme_selected_color");
+      }
+    } catch (error) {
+      theme = "light"
+    }
+
+    document.getElementsByTagName('html')[0].setAttribute('data-theme', theme);
+  </script>
   <div id="root">
     <div class="loading"></div>
   </div>

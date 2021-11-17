@@ -4,7 +4,7 @@ import 'rc-switch/assets/index.css';
 import { getCurrentColor, setCurrentColor } from 'helpers/Utils';
 import { DarkIcon, LightIcon } from '../../components/svg';
 
-const TopnavDarkSwitch = () => {
+const DarkSwitch = () => {
   const [switchChecked, setSwitchChecked] = useState(false);
 
   useEffect(() => {
@@ -15,21 +15,25 @@ const TopnavDarkSwitch = () => {
   const changeMode = () => {
     let color = getCurrentColor();
 
-    if (color.indexOf('dark') > -1) {
-      color = color.replace('dark', 'light');
-    } else if (color.indexOf('light') > -1) {
-      color = color.replace('light', 'dark');
+    if (color === 'dark') {
+      color = 'light';
+    } else if (color === 'light') {
+      color = 'dark';
     }
+
+    document.getElementsByTagName('html')[0].setAttribute('data-theme', color);
     setCurrentColor(color);
-    setSwitchChecked(color.indexOf('dark') > -1);
-    setTimeout(() => {
-      window.location.reload();
-    }, 500);
+    setSwitchChecked(color === 'dark');
+    // setTimeout(() => {
+    //   window.location.reload();
+    // }, 500);
   };
 
   return (
     <div>
-      <LightIcon />
+      <span className="theme-svg">
+        <LightIcon />
+      </span>
       <div className="d-none d-md-inline-block align-middle mx-2">
         <Switch
           id="tooltip_switch"
@@ -38,8 +42,10 @@ const TopnavDarkSwitch = () => {
           onChange={changeMode}
         />
       </div>
-      <DarkIcon />
+      <span className="theme-svg">
+        <DarkIcon />
+      </span>
     </div>
   );
 };
-export default TopnavDarkSwitch;
+export default DarkSwitch;

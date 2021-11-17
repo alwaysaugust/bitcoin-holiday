@@ -1,10 +1,62 @@
 /* 18.Calendar */
+
+.rbc-calendar {
+  height: auto;
+}
+
+.calendar-wrapper {
+  position: relative;
+  height: calc(100vh - 70px);
+}
+
 .big-calendar-header {
+  line-height: 1.25;
   margin-bottom: 1em;
+  margin-top: 30px;
+  padding-left: $body-x-padding;
+  padding-right: $body-x-padding;
+  //color: $toolbar-text-color;
+
+  .bch-left-wrapper {
+    display: flex;
+    align-items: center;
+
+    .btc-logo {
+      width: 66px;
+      margin-right: 23px;
+    }
+  }
+
+  .bch-right-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .brc-month-name-label {
+    font-size: 2.8125rem;
+    font-weight: bold;
+  }
+
+  .brc-title-label {
+    font-size: 1rem;
+    display: block;
+  }
+
+}
+
+.rbc-day-bg {
+  border-top: 1px solid var(--calendar-day-border-color);
+  width: 12.8%;
+  flex-basis: 12.8%;
+  flex-grow: unset;
 }
 
 .rbc-month-header {
   min-height: 50px;
+  border-bottom: 1px solid;
+  border-color: var(--month-header-border-color);
+  padding: 0 $body-x-padding;
+  justify-content: space-between;
 }
 
 .rbc-today {
@@ -12,17 +64,16 @@
 }
 
 .calendar-prev-btn,
-.calendar-next-btn {
+.calendar-next-btn,
+.calendar-btn {
   outline: initial !important;
   box-shadow: initial !important;
-  border-radius: 40px !important;
   text-align: center;
   min-width: 30px;
   height: 30px;
-  padding: 0.55rem 0;
-  background: $theme-color-1;
-  color: $foreground-color;
-  border: 1px solid $theme-color-1;
+  padding: 0;
+  color: $primary-color;
+  background: transparent;
   line-height: 0.9 !important;
   font-size: 0.76rem;
   font-weight: normal !important;
@@ -35,13 +86,23 @@
 
   &:hover {
     background-color: transparent;
-    border-color: lighten($theme-color-1, 10%);
-    color: $theme-color-1;
+    opacity: .8;
+    //border-color: lighten($theme-color-1, 10%);
+    //color: $theme-color-1;
+  }
+}
+
+.calendar-btn {
+  margin-left: 20px;
+  &:hover {
+    background-color: transparent;
+    opacity: .8;
+    border-color: transparent;
   }
 }
 
 .calendar-prev-btn {
-  margin-right: 5px;
+  margin-right: 0px;
 }
 
 .calendar-today-btn {
@@ -50,12 +111,18 @@
 }
 
 .rbc-month-row {
-  min-height: 5em;
+  min-height: 218px;
   z-index: 1;
+  padding: 0 $body-x-padding;
+  margin-top: 45px;
 
   @include respond-below(xs) {
     min-height: 3em;
   }
+}
+
+.rbc-month-row + .rbc-month-row {
+  margin-top: 0;
 }
 
 .rbc-month-view {
@@ -75,39 +142,52 @@
 .rbc-month-row + .rbc-month-row,
 .rbc-header + .rbc-header,
 .rbc-header {
-  border-color: $separator-color-light !important;
+  border-left: none;
+}
+
+.rbc-month-row + .rbc-month-row {
+  border-top: none !important;
 }
 
 .rbc-header {
-  padding: 15px 5px;
-  color: $theme-color-1;
+  padding: 15px 0;
+  color: var(--grey-color-1);
+  font-size: .75rem;
+  text-transform: uppercase;
+  text-align: left;
+  border-bottom: none;
+  width: 12.8%;
+  flex-basis: 12.8%;
+  flex-grow: unset;
 }
 
 .rbc-date-cell {
-  padding: 10px;
+  padding: 10px 0;
+  text-align: left;
+  flex-basis: 12.8%;
+  flex-grow: unset;
 
   a {
-    border-radius: 50%;
     width: 28px;
     height: 28px;
     text-align: center;
     vertical-align: middle;
-    padding: 5px;
+    //padding: 5px;
     font-weight: initial;
     display: inline-block;
+    font-size: 25px;
   }
 }
 
 .rbc-date-cell.rbc-now a {
-  background: $theme-color-1;
-  color: $foreground-color;
+  color: $theme-color-1;
 }
 
 .rbc-event {
   font-size: 0.85em;
   border-radius: 25px;
   text-align: center;
-  padding: 0px 5px;
+  padding: 0 5px;
   background: $theme-color-2;
 }
 
@@ -137,4 +217,17 @@
       border-left: 1px solid $separator-color-light !important;
     }
   }
+}
+
+.rbc-row {
+  justify-content: space-between;
+}
+
+.rbc-row-bg {
+  padding: 0 $body-x-padding;
+  justify-content: space-between;
+}
+
+.brc-header-title {
+  min-width: 300px;
 }
