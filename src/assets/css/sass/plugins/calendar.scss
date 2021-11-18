@@ -46,17 +46,14 @@
 
 .rbc-day-bg {
   border-top: 1px solid var(--calendar-day-border-color);
-  width: 12.8%;
-  flex-basis: 12.8%;
-  flex-grow: unset;
+  margin: 0 10px;
 }
 
 .rbc-month-header {
   min-height: 50px;
   border-bottom: 1px solid;
   border-color: var(--month-header-border-color);
-  padding: 0 $body-x-padding;
-  justify-content: space-between;
+  padding: 0 $body-x-padding - 10;
 }
 
 .rbc-today {
@@ -113,7 +110,7 @@
 .rbc-month-row {
   min-height: 218px;
   z-index: 1;
-  padding: 0 $body-x-padding;
+  padding: 0 $body-x-padding - 10;
   margin-top: 45px;
 
   @include respond-below(xs) {
@@ -156,18 +153,15 @@
   text-transform: uppercase;
   text-align: left;
   border-bottom: none;
-  width: 12.8%;
-  flex-basis: 12.8%;
-  flex-grow: unset;
+  margin: 0 10px;
 }
 
 .rbc-date-cell {
   padding: 10px 0;
   text-align: left;
-  flex-basis: 12.8%;
-  flex-grow: unset;
+  margin: 0 10px;
 
-  a {
+  a, span {
     width: 28px;
     height: 28px;
     text-align: center;
@@ -185,10 +179,10 @@
 
 .rbc-event {
   font-size: 0.85em;
-  border-radius: 25px;
   text-align: center;
-  padding: 0 5px;
-  background: $theme-color-2;
+  width: auto;
+  padding: 0;
+  background: transparent;
 }
 
 .rtl {
@@ -219,15 +213,85 @@
   }
 }
 
-.rbc-row {
-  justify-content: space-between;
-}
-
 .rbc-row-bg {
-  padding: 0 $body-x-padding;
-  justify-content: space-between;
+  padding: 0 $body-x-padding - 10;
 }
 
 .brc-header-title {
   min-width: 300px;
+}
+
+.rbc-row + .rbc-row {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.rbc-row-segment {
+  padding: 0;
+}
+
+.rbc-event-content {
+  height: 190px;
+}
+
+.rbc-cus-event-content {
+  height: 100%;
+}
+
+.rbc-cus-event-cell {
+  height: 100%;
+  text-align: left;
+}
+
+.rbc-event-today {
+  background: var(--calendar-event-bg-color);
+  color: var(--primary-color);
+  border-radius: 0 0 8px 8px;
+  border-top: 3px solid var(--theme-color-1);
+  padding: 10px 12px 50px 12px;
+  position: relative;
+
+  .rbc-date-cell {
+    margin: 0 0 6px 0;
+    padding: 0;
+
+    span {
+      color: var(--theme-color-1);
+    }
+  }
+
+  .rbc-title-cell {
+    font-size: .75rem;
+    font-weight: 700;
+  }
+
+  .rbc-org-cell {
+    font-size: .625rem;
+    margin-bottom: 9px;
+  }
+
+  .rbc-description-cell {
+    font-size: .6875rem;
+    white-space: pre-line;
+  }
+
+  .event-btn-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 12px;
+  }
+}
+
+.rbc-event{
+  &.rbc-selected {
+    background: transparent;
+    outline: none;
+  }
+  &:focus {
+    outline: none;
+  }
 }

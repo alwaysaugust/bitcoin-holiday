@@ -10,6 +10,8 @@
     "availity-reactstrap-validation": "^2.7.1",
     "axios": "^0.21.1",
     "classnames": "2.3.1",
+    "date-arithmetic": "^4.1.0",
+    "dayjs": "^1.10.7",
     "formik": "^2.2.9",
     "moment": "2.29.1",
     "mousetrap": "^1.6.5",
