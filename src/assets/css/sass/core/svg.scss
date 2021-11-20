@@ -1,5 +1,5 @@
 .theme-svg {
-  svg {
-    fill: var(--primary-color);
+  svg path {
+    fill: var(--primary-color) !important;
   }
 }

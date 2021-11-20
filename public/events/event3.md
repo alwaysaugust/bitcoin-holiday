@@ -1,0 +1,9 @@
+---
+date: 2021-11-11
+title: This is the gentle men!
+img: https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500
+org: 1976-11-11
+isBitcoinEvent: false
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.

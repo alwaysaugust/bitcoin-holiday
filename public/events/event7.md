@@ -1,0 +1,9 @@
+---
+date: 2021-11-20
+title: S2X Failure to Launch Day
+img: https://images.pexels.com/photos/5686102/pexels-photo-5686102.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260
+org: 1976-11-20
+isBitcoinEvent: true
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.

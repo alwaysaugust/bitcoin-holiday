@@ -8,7 +8,7 @@
 
   --primary-color: #000;
   --foreground-color: #fff;
-  --separator-color: #d7d7d7;
+  --separator-color: #ddd;
 
   // Navbar
   --navbar-bg-color: #121212;
@@ -20,6 +20,9 @@
   --month-header-border-color: #d2d2d2;
   --calendar-day-border-color: #000;
   --calendar-event-bg-color: #fff;
+  --calendar-event-description-color: #727271;
+  --share-icon-bg-color: #F2F0EC;
+  --modal-bg-color: #FFFFFF;
 
   // Palette
   --grey-color-1: #727271;
@@ -35,7 +38,7 @@ html[data-theme=dark] {
 
   --primary-color: #fff;
   --foreground-color: #fff;
-  --separator-color: #d7d7d7;
+  --separator-color: #ddd;
 
   // Navbar
   --navbar-bg-color: #F2F0EC;
@@ -47,6 +50,9 @@ html[data-theme=dark] {
   --month-header-border-color: #333;
   --calendar-day-border-color: #fff;
   --calendar-event-bg-color: #292929;
+  --calendar-event-description-color: #fff;
+  --share-icon-bg-color: #121212;
+  --modal-bg-color: #292929;
 
   // Palette
   --grey-color-1: #727271;

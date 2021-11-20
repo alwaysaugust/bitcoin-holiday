@@ -12,12 +12,10 @@ import PrevIcon from '../../components/svg/PrevIcon';
 import NextIcon from '../../components/svg/NextIcon';
 import CalendarIcon from '../../components/svg/CalendarIcon';
 import ShareModal from '../ShareModal';
-import EventViewModal from '../EventViewModal';
 
 const CalendarToolbar = (toolbar) => {
   const [selectedRadio, setSelectedRadio] = useState(0);
   const [shareModal, setShareModal] = useState(false);
-  const [eventModal, setEventModal] = useState(false);
   const goToBack = () => {
     toolbar.onNavigate('PREV');
   };
@@ -104,7 +102,6 @@ const CalendarToolbar = (toolbar) => {
           <button
             type="button"
             className="btn btn-add-to-calendar"
-            onClick={() => setEventModal(!eventModal)}
           >
             <AddIcon />
             <span>Add to Calendar</span>
@@ -119,7 +116,6 @@ const CalendarToolbar = (toolbar) => {
         </div>
       </div>
       <ShareModal shareModal={shareModal} setShareModal={setShareModal} />
-      <EventViewModal eventModal={eventModal} setEventModal={setEventModal} />
     </div>
   );
 };

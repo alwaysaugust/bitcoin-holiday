@@ -1,0 +1,9 @@
+---
+date: 2021-11-3
+title: SegWit Lock-in Day
+img: https://images.pexels.com/photos/7430325/pexels-photo-7430325.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260
+org: 1976-11-3
+isBitcoinEvent: false
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.

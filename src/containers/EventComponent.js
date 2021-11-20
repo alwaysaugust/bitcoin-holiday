@@ -1,34 +1,45 @@
 /* eslint-disable react/no-array-index-key */
-import React from 'react';
+import React, { useState } from 'react';
 import dayjs from 'dayjs';
+import moment from 'moment';
+import EventViewModal from './EventViewModal';
 
 const EventComponent = ({ event }) => {
+  const [eventModal, setEventModal] = useState(false);
+
+  const showEventViewModalHandler = () => {
+    setEventModal(true);
+  };
   return (
     <div className="rbc-cus-event-content">
-      {dayjs(event.date).format('DD') === dayjs(new Date()).format('DD') ? (
-        <div className="rbc-cus-event-cell rbc-event-today">
-          <div>
-            <div className="rbc-date-cell">
-              <span>{dayjs(event.date).format('DD')}</span>
-            </div>
-            <div className="rbc-title-cell">
-              {event.title}
-            </div>
-            <div className="rbc-org-cell">
-              {event.org}
-            </div>
-            <div className="rbc-description-cell">
-              {event.description}
-            </div>
+      <div className="rbc-cus-event-cell rbc-event-today">
+        <div>
+          <div className="rbc-date-cell">
+            <span>{dayjs(event.date).format('DD')}</span>
           </div>
-          <div className="event-btn-wrapper">
-            <button type="button" className="btn btn-event-view">
-              <span>View Event</span>
-            </button>
+          <div className="rbc-title-cell">
+            <span>{event.title}</span>
           </div>
-        </div>) :
-        <div className="rbc-cus-event-cell" />
-      }
+          <div className="rbc-org-cell">
+            <span>{moment(event.org).format('MMMM Do, YYYY')}</span>
+          </div>
+          <div className="rbc-description-cell">{event.description}</div>
+        </div>
+        <div className="event-btn-wrapper">
+          <button
+            type="button"
+            className="btn btn-event-view"
+            onClick={() => showEventViewModalHandler(event)}
+          >
+            <span>View Event</span>
+          </button>
+        </div>
+      </div>
+      <EventViewModal
+        eventModal={eventModal}
+        setEventModal={setEventModal}
+        eventDetail={event}
+      />
     </div>
   );
 };
