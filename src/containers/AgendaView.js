@@ -64,11 +64,12 @@ export const AgendaView = ({ accessors, localizer, length, date, events }) => {
                 )}
                 <div>
                   {/* eslint-disable-next-line no-use-before-define */}
-                  <div className="styles-eventTitle">{accessors.title(event)}</div>
+                  <div className="styles-eventTitle">
+                    {accessors.title(event)}
+                  </div>
                   <div className="styles-org">
                     {moment(event.org).format('MMMM Do, YYYY')}
                   </div>
-                  {/* <div className="styles.time">{timeRangeLabel(day, event)}</div> */}
                 </div>
               </div>
               <div className="styles-description">{event.description}</div>
@@ -111,25 +112,6 @@ export const AgendaView = ({ accessors, localizer, length, date, events }) => {
       );
     }, []);
   };
-
-  // eslint-disable-next-line consistent-return
-  // const timeRangeLabel = (day, event) => {
-  //   const end = accessors.end(event)
-  //   const start = accessors.start(event)
-
-  //   if (!accessors.allDay(event)) {
-  //     if (dayjs(start).day() === dayjs(end).day()) {
-  //       const timePeriod = `${dayjs(start).format('h:mma')} – ${dayjs(
-  //         end
-  //       ).format('h:mma')}`
-  //       return timePeriod;
-  //     }
-  //     const startDate = dayjs(start).format('DD-MM YYYY, h:mma')
-  //     const endDate = dayjs(end).format('DD-MM YYYY, h:mma')
-  //     return `${startDate} – ${endDate}`
-
-  //   }
-  // }
 
   const end = dates.add(startDate, length, 'day');
   const range = rangeFunc(startDate, end, 'day');

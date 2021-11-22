@@ -35,11 +35,36 @@
   .brc-month-name-label {
     font-size: 2.8125rem;
     font-weight: bold;
+
+    @include respond-below(sm) {
+      font-size: 1.875rem;
+      margin-right: 10px;
+    }
   }
 
   .brc-title-label {
     font-size: 1rem;
     display: block;
+
+    @include respond-below(sm) {
+      font-size: 0.75rem;
+    }
+  }
+
+  .calendar-btn-part {
+    position: relative;
+  }
+
+  .darkswitch {
+    @include respond-below(xl) {
+      margin-left: auto;
+    }
+  }
+
+  @include respond-below(md) {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 0;
   }
 
 }
@@ -54,6 +79,17 @@
   border-bottom: 1px solid;
   border-color: var(--month-header-border-color);
   padding: 0 $body-x-padding - 10;
+
+  @include respond-below(sm) {
+    padding: 0 20px;
+    display: flex;
+  }
+
+  .rbc-header {
+    @include respond-below(md) {
+      text-align: center;
+    }
+  }
 }
 
 .rbc-today {
@@ -120,6 +156,16 @@
 
   @include respond-below(xs) {
     min-height: 3em;
+  }
+
+  @include respond-below(md) {
+    padding: 0 20px;
+    min-height: 78px;
+    margin-top: 32px;
+  }
+
+  @include respond-above(lg) {
+    min-height: 218px;
   }
 }
 
@@ -221,10 +267,19 @@
 
 .rbc-row-bg {
   padding: 0 $body-x-padding - 10;
+
+  @include respond-below(md) {
+    padding: 0 20px;
+    height: 78px;
+  }
 }
 
 .brc-header-title {
   min-width: 300px;
+
+  @include respond-below(md) {
+    min-width: auto;
+  }
 }
 
 .rbc-row + .rbc-row {
@@ -244,6 +299,21 @@
 
 .rbc-cus-event-content {
   height: 100%;
+}
+
+.rbc-cus-event-content-mark {
+  position: relative;
+  .rbc-cus-event-mark-cell {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+  }
+  .no-bitcoin-item {
+    background-color: var(--primary-color);
+  }
 }
 
 .rbc-cus-event-cell {
@@ -379,15 +449,23 @@
 
   .listview-item-date-wrap {
     width: 360px;
+
+    @include respond-below(md) {
+      width: auto;
+    }
   }
   .styles-dateWrap {
     display: flex;
     align-items: center;
     p {
       font-size: 1.25rem;
-      margin-bottom: 0px;
+      margin-bottom: 0;
       color: var(--primary-color);
       text-transform: uppercase;
+
+      @include respond-below(md) {
+        font-size: 1rem;
+      }
     }
   }
 
@@ -402,14 +480,28 @@
     font-size: 1.625rem;
     font-weight: 700;
     width: 287px;
+
+    @include respond-below(md) {
+      font-size: 1.125rem;
+    }
   }
   .styles-org {
     font-size: 1rem;
+
+    @include respond-below(md) {
+      font-size: 0.875rem;
+    }
   }
   .styles-description {
     width: 496px;
     max-width: 496px;
-    font-size: 14px;
+    font-size: 0.875rem;
+
+    @include respond-below(md) {
+      width: 100%;
+      font-size: 0.75rem;
+      margin-top: 13px;
+    }
   }
   .styles-btn-div {
     visibility: hidden;
@@ -449,6 +541,12 @@
         }
       }
     }
+  }
+
+  @include respond-below(md) {
+    display: block;
+    padding: 28px 20px;
+    height: auto;
   }
 }
 

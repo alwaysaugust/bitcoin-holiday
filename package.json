@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Bitcoin Holiday",
   "private": true,
-  "homepage": "https://davidjin-ca.github.io/bitcoin-holiday",
   "dependencies": {
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/react": "^11.2.7",

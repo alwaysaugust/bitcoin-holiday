@@ -37,7 +37,7 @@ class App extends React.Component {
     const currentAppLocale = AppLocale[locale];
 
     return (
-      <div className="h-100">
+      <div className="app-div">
         <IntlProvider
           locale={currentAppLocale.locale}
           messages={currentAppLocale.messages}

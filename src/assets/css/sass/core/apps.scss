@@ -104,4 +104,8 @@
   @include respond-below(lg) {
     padding-right: 0;
   }
+
+  @include respond-below(md) {
+    padding-right: 0;
+  }
 }

@@ -4,7 +4,7 @@ import 'rc-switch/assets/index.css';
 import { getCurrentColor, setCurrentColor } from 'helpers/Utils';
 import { DarkIcon, LightIcon } from '../../components/svg';
 
-const DarkSwitch = () => {
+const DarkSwitch = ({ className }) => {
   const [switchChecked, setSwitchChecked] = useState(false);
 
   useEffect(() => {
@@ -30,11 +30,11 @@ const DarkSwitch = () => {
   };
 
   return (
-    <div>
+    <div className={`align-items-center ${className}`}>
       <span className="theme-svg">
         <LightIcon />
       </span>
-      <div className="d-none d-md-inline-block align-middle mx-2">
+      <div className="align-middle mx-2">
         <Switch
           id="tooltip_switch"
           className="custom-switch custom-switch-primary custom-switch-small"

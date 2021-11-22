@@ -128,8 +128,8 @@ const CalendarToolbar = (toolbar) => {
           </div>
         </div>
 
-        <div className="bch-right-wrapper">
-          <DarkSwitch />
+        <div className="bch-right-wrapper d-md-flex">
+          <DarkSwitch className="d-none d-md-flex darkswitch" />
           <ButtonGroup className="btn-group-toggle-view">
             <Button
               color="primary"
@@ -150,14 +150,14 @@ const CalendarToolbar = (toolbar) => {
           </ButtonGroup>
           <button
             type="button"
-            className="btn btn-add-to-calendar"
+            className="btn btn-add-to-calendar d-none d-md-block"
           >
             <AddIcon />
             <span>Add to Calendar</span>
           </button>
           <button
             type="button"
-            className="btn btn-share"
+            className="btn btn-share d-none d-md-block"
             onClick={() => setShareModal(!shareModal)}
           >
             <ShareIcon />

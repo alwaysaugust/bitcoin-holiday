@@ -90,8 +90,8 @@ class Home extends React.Component {
     return (
       <AppLayout>
         <div className="dashboard-wrapper">
-          <Row>
-            <Colxx xxs="12">
+          <Row className="m-0">
+            <Colxx xxs="12" className="p-0">
               <div className="calendar-wrapper">
                 <Calendar
                   className=""

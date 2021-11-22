@@ -367,14 +367,104 @@
     height: $navbar-height-lg;
   }
 
-  @include respond-below(lg) {
-    height: $navbar-height-md;
-    padding: 1rem 0 1rem 0;
+  @include respond-above(md) {
+    height: auto;
+  }
+
+  @include respond-below(md) {
+    padding-left: 20px;
+    padding-right: 20px;
+    height: auto;
   }
 
   @include respond-below(sm) {
     height: $navbar-height-xs;
     padding: 10px 0;
+  }
+}
+
+.mobile-navbar {
+  padding: 14px 20px;
+  align-items: center;
+  position: relative;
+  background-color: var(--main-bg-color);
+  .btc-logo-mobile {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    // position: absolute;
+    // left: 50%;
+    // transform: translate(-50%);
+  }
+  .hamburger-icon-btn {
+    border: none;
+    background-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+    svg {
+      path {
+        fill: var(--primary-color);
+      }
+    }
+  }
+  .close-icon-btn {
+    border: none;
+    background-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+    svg {
+      path {
+        fill: var(--primary-color);
+      }
+    }
+  }
+  .mobile-navbar-content {
+    position: absolute;
+    left: 0px;
+    top: 58px;
+    width: 100%;
+    z-index: 10;
+    height: calc(100vh - 58px);
+    background-color: var(--main-bg-color);
+    .mobile-navbar-li {
+      background-color: var(--primary-color);
+      padding: 15px 0px;
+      div:first-child {
+        color: var(--navbar-color);
+      }
+      .nav-item {
+        font-weight: bold;
+        padding: 9px 20px;
+        list-style: none;
+        a {
+          color: var(--navbar-color);
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .btn-board {
+      padding: 20px 20px;
+      border-bottom: 1px solid var(--separator-color);
+      width: 100%;
+      display: flex;
+      align-items: center;
+      .btn-add-to-calendar {
+        margin: 0;
+        flex: 1 1 0%;
+      }
+    }
+
+    .mobile-theme-toggle {
+      display: flex;
+      justify-content: center;
+      padding: 27px 0;
+      background-color: var(--main-bg-color);
+
+    }
+
   }
 }
 

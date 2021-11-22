@@ -17,7 +17,7 @@ body {
   }
 
   @include respond-below(xs) {
-    padding-bottom: 60px;
+    //padding-bottom: 60px;
   }
 
   &.no-footer {
