@@ -23,6 +23,7 @@ class Home extends React.Component {
     super(props);
     this.state = {
       events: [],
+      selectedDay: new Date(),
     };
   }
 
@@ -33,24 +34,59 @@ class Home extends React.Component {
           .then((res) => res.text())
           .then((res) => fm(res))
           .then((res) => ({
-            start: res.attributes.date,
-            end: res.attributes.date,
-            date: res.attributes.date,
+            start:
+              typeof res.attributes.date === 'string'
+                ? new Date(res.attributes.date)
+                : res.attributes.date,
+            end:
+              typeof res.attributes.date === 'string'
+                ? new Date(res.attributes.date)
+                : res.attributes.date,
+            date:
+              typeof res.attributes.date === 'string'
+                ? new Date(res.attributes.date)
+                : res.attributes.date,
             title: res.attributes.title,
             img: res.attributes.img,
             org: res.attributes.org,
             isBitcoinEvent: res.attributes.isBitcoinEvent,
-            description: res.body
+            description: res.body,
           }))
           .catch((error) => alert(error))
       )
     );
 
-    this.setState((state) => ({ ...state, events }));
+    const grouped = [];
+    events.forEach((el) => {
+      const id = grouped.findIndex(
+        (val) => val.date.getTime() === el.date.getTime()
+      );
+      if (id >= 0) {
+        grouped[id].isMultipleEvent = true;
+        if (!grouped[id].events) {
+          grouped[id].events = [
+            {
+              date: grouped[id].date,
+              title: grouped[id].title,
+              img: grouped[id].img,
+              org: grouped[id].org,
+              isBitcoinEvent: grouped[id].isBitcoinEvent,
+              description: grouped[id].description,
+            },
+          ];
+        }
+        grouped[id].events.push(el);
+      } else {
+        grouped.push(el);
+      }
+    });
+    this.setState({
+      events: grouped
+    });
   }
 
   render() {
-    const { events } = this.state;
+    const { events, selectedDay } = this.state;
     return (
       <AppLayout>
         <div className="dashboard-wrapper">
@@ -66,15 +102,21 @@ class Home extends React.Component {
                   endAccessor="end"
                   events={events}
                   defaultView="month"
-                  defaultDate={new Date()}
-                  step={60}
+                  date={selectedDay}
+                  step={15}
                   components={{
                     toolbar: CalendarToolbar,
                     event: EventComponent,
                   }}
+                  showMultiDayTimes
                   views={{
                     month: true,
                     agenda: AgendaView,
+                  }}
+                  onNavigate={(day) => {
+                    this.setState({
+                      selectedDay: day,
+                    });
                   }}
                 />
               </div>

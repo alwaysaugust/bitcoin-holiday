@@ -7,7 +7,9 @@ import ArrowLeftIcon from '../components/svg/ArrowLeftIcon';
 import ShareIcon from '../components/svg/ShareIcon';
 
 const EventViewModal = ({ eventModal, setEventModal, eventDetail }) => {
-
+  const events = eventDetail.isMultipleEvent
+    ? eventDetail.events
+    : [eventDetail];
   return (
     <Modal
       className="event-view-modal"
@@ -35,27 +37,31 @@ const EventViewModal = ({ eventModal, setEventModal, eventDetail }) => {
             </span>
           </button>
         </div>
-        <div className="section-body">
-          <div className="event-title">{eventDetail?.title ?? ''}</div>
-          <div className="event-img-wrapper">
-            {eventDetail?.img && (
-              <img
-                alt={eventDetail?.title ?? ''}
-                src={eventDetail?.img}
-                className="event-img"
-              />
-            )}
-          </div>
-          <div className="event-org">
-            {eventDetail !== undefined
-              ? moment(eventDetail.org).format('MMMM Do, YYYY')
-              : ''}
-          </div>
-          <div className="separator" />
-          <div className="event-description">
-            {eventDetail?.description ?? ''}
-          </div>
-        </div>
+        {events.map((el, idx) => {
+          return (
+            <div className="section-body" key={idx}>
+              <div className="event-title">{el?.title ?? ''}</div>
+              <div className="event-img-wrapper">
+                {el?.img && (
+                  <img
+                    alt={el?.title ?? ''}
+                    src={el?.img}
+                    className="event-img"
+                  />
+                )}
+              </div>
+              <div className="event-org">
+                {el !== undefined
+                  ? moment(el.org).format('MMMM Do, YYYY')
+                  : ''}
+              </div>
+              <div className="separator" />
+              <div className="event-description">
+                {el?.description ?? ''}
+              </div>
+            </div>
+          );
+        })}
       </ModalBody>
     </Modal>
   );

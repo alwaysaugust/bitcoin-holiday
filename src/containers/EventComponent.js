@@ -13,17 +13,47 @@ const EventComponent = ({ event }) => {
   return (
     <div className="rbc-cus-event-content">
       <div className="rbc-cus-event-cell rbc-event-today">
-        <div>
+        <div className="event-content-wrapper">
           <div className="rbc-date-cell">
             <span>{dayjs(event.date).format('DD')}</span>
           </div>
-          <div className="rbc-title-cell">
-            <span>{event.title}</span>
-          </div>
-          <div className="rbc-org-cell">
-            <span>{moment(event.org).format('MMMM Do, YYYY')}</span>
-          </div>
-          <div className="rbc-description-cell">{event.description}</div>
+          {!event.isMultipleEvent ? (
+            <>
+              <div className="rbc-title-cell">
+                <span>{event.title}</span>
+              </div>
+              <div className="rbc-org-cell">
+                <span>{moment(event.org).format('MMMM Do, YYYY')}</span>
+              </div>
+              <div className="rbc-description-cell">{event.description}</div>
+              {event.isBitcoinEvent && (
+                <div className="rbc-btc-letter-cell">
+                  <img
+                    src="/assets/img/bitcoin-letter.png"
+                    alt="Bitcoin Holiday"
+                  />
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="rbc-multiple-event-wrapper">
+              {event.events.map((el, idx) => {
+                return (
+                  <div key={idx} className="rbc-multiple-event-content">
+                    <span>{el.title}</span>
+                    {el.isBitcoinEvent && (
+                      <span>
+                        <img
+                          src="/assets/img/bitcoin-letter.png"
+                          alt="Bitcoin Holiday"
+                        />
+                      </span>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
         <div className="event-btn-wrapper">
           <button

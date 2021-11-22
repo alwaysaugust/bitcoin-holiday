@@ -29,10 +29,11 @@ function inRange(e, start, end, accessors) {
 export const AgendaView = ({ accessors, localizer, length, date, events }) => {
   const [eventModal, setEventModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(events[0]);
+  const startDate = dayjs(date).startOf('month').toDate();
 
-  const showEventViewModalHandler = (idx) => {
+  const showEventViewModalHandler = (event) => {
+    setSelectedEvent(event);
     setEventModal(true);
-    setSelectedEvent(events[idx]);
   };
 
   // eslint-disable-next-line no-shadow
@@ -45,35 +46,63 @@ export const AgendaView = ({ accessors, localizer, length, date, events }) => {
       return (
         // eslint-disable-next-line react/no-array-index-key
         <div key={idx} className="listview-item">
-          <div className="listview-item-date-wrap">
-            {idx === 0 && (
+          {!event.isMultipleEvent ? (
+            <>
+              <div className="listview-item-date-wrap">
+                {idx === 0 && (
+                  <div className="styles-dateWrap">
+                    <p>{localizer.format(day, 'dddd DD')}</p>
+                    <div className="styles-line" />
+                    {event.isBitcoinEvent && (
+                      <img
+                        alt="Bitcoin"
+                        src="/assets/img/bitcoin-letter.png"
+                        className="lg-bitcoin"
+                      />
+                    )}
+                  </div>
+                )}
+                <div>
+                  {/* eslint-disable-next-line no-use-before-define */}
+                  <div className="styles-eventTitle">{accessors.title(event)}</div>
+                  <div className="styles-org">
+                    {moment(event.org).format('MMMM Do, YYYY')}
+                  </div>
+                  {/* <div className="styles.time">{timeRangeLabel(day, event)}</div> */}
+                </div>
+              </div>
+              <div className="styles-description">{event.description}</div>
+            </>
+          ) : (
+            <div className="listview-multiple-wrapper">
               <div className="styles-dateWrap">
                 <p>{localizer.format(day, 'dddd DD')}</p>
-                <div className="styles-line" />
-                {event.isBitcoinEvent && (
-                  <img
-                    alt="Bitcoin"
-                    src="/assets/img/bitcoin-letter.png"
-                    className="lg-bitcoin"
-                  />
-                )}
               </div>
-            )}
-            <div>
-              {/* eslint-disable-next-line no-use-before-define */}
-              <div className="styles-eventTitle">{accessors.title(event)}</div>
-              <div className="styles-org">
-                {moment(event.org).format('MMMM Do, YYYY')}
+              <div className="listview-ml-item-wrapper">
+                {event.events.map((el, index) => {
+                  return (
+                    // eslint-disable-next-line react/no-array-index-key
+                    <div key={index} className="listview-ml-item">
+                      <span>{el.title}</span>
+                      {el.isBitcoinEvent && (
+                        <span>
+                          <img
+                            src="/assets/img/bitcoin-letter.png"
+                            alt="Bitcoin Holiday"
+                          />
+                        </span>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
-              {/* <div className="styles.time">{timeRangeLabel(day, event)}</div> */}
             </div>
-          </div>
-          <div className="styles-description">{event.description}</div>
+          )}
           <div className="styles-btn-div ml-auto">
             <button
               type="button"
               className="btn btn-list-view-event-view"
-              onClick={() => showEventViewModalHandler(idx)}
+              onClick={() => showEventViewModalHandler(event)}
             >
               <span>View Event</span>
             </button>
@@ -102,16 +131,17 @@ export const AgendaView = ({ accessors, localizer, length, date, events }) => {
   //   }
   // }
 
-  const end = dates.add(date, length, 'day');
-  const range = rangeFunc(date, end, 'day');
-  // eslint-disable-next-line no-param-reassign
-  events = events.filter((event) => inRange(event, date, end, accessors));
-  events.sort((a, b) => +accessors.start(a) - +accessors.start(b));
+  const end = dates.add(startDate, length, 'day');
+  const range = rangeFunc(startDate, end, 'day');
+  const filteredEvents = events.filter((event) =>
+    inRange(event, startDate, end, accessors)
+  );
+  filteredEvents.sort((a, b) => +accessors.start(a) - +accessors.start(b));
 
   return (
     <div>
-      {events.length !== 0
-        ? range.map((day, idx) => renderDay(day, events, idx))
+      {filteredEvents.length !== 0
+        ? range.map((day, idx) => renderDay(day, filteredEvents, idx))
         : 'No event dates in range'}
 
       <EventViewModal

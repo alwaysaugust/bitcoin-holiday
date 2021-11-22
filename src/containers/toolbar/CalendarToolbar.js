@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-import { Button, ButtonGroup } from 'reactstrap';
+import { Button, ButtonGroup, Dropdown, DropdownMenu, DropdownToggle } from 'reactstrap';
 import DarkSwitch from './DarkSwitch';
 import ShareIcon from '../../components/svg/ShareIcon';
 import AddIcon from '../../components/svg/AddIcon';
@@ -12,23 +12,37 @@ import PrevIcon from '../../components/svg/PrevIcon';
 import NextIcon from '../../components/svg/NextIcon';
 import CalendarIcon from '../../components/svg/CalendarIcon';
 import ShareModal from '../ShareModal';
+import { months } from '../../constants/defaultValues';
 
 const CalendarToolbar = (toolbar) => {
   const [selectedRadio, setSelectedRadio] = useState(0);
   const [shareModal, setShareModal] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [selectedMonth, setSelectedMonth] = useState(0);
+
+  useEffect(() => {
+    setSelectedMonth(months[toolbar.date.getMonth()].value);
+  }, [toolbar]);
+
   const goToBack = () => {
     toolbar.onNavigate('PREV');
   };
   const goToNext = () => {
     toolbar.onNavigate('NEXT');
   };
-  const goToWeekView = () => {
+  const goToListView = () => {
     setSelectedRadio(1);
     toolbar.onView('agenda');
   };
   const goToMonthView = () => {
     setSelectedRadio(0);
     toolbar.onView('month');
+  };
+  const onUpdate = () => {
+    toolbar.onNavigate(
+      'DATE',
+      new Date(new Date().getFullYear(), selectedMonth - 1, 1)
+    );
   };
 
   const label = () => {
@@ -71,11 +85,46 @@ const CalendarToolbar = (toolbar) => {
                 <NextIcon />
               </span>
             </button>
-            <button type="button" className="btn calendar-btn">
-              <span className="theme-svg">
-                <CalendarIcon />
-              </span>
-            </button>
+            <Dropdown
+              isOpen={dropdownOpen}
+              toggle={() => setDropdownOpen(!dropdownOpen)}
+              className="calendar-dropdown"
+            >
+              <DropdownToggle className="calendar-btn">
+                <span className="theme-svg">
+                  <CalendarIcon />
+                </span>
+              </DropdownToggle>
+              <DropdownMenu>
+                <div className="arrow" />
+                <div>
+                  <div>
+                    <select
+                      className="form-control month-select"
+                      value={selectedMonth}
+                      onChange={e => setSelectedMonth(e.target.value)}
+                      onBlur={() => {}}
+                    >
+                      {months.map((el) => {
+                        return (
+                          <option value={el.value} key={el.value}>
+                            {el.name}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                  <button
+                    type="button"
+                    className="btn btn-month-update"
+                    onClick={onUpdate}
+                  >
+                    Update
+                  </button>
+                </div>
+
+              </DropdownMenu>
+            </Dropdown>
           </div>
         </div>
 
@@ -93,7 +142,7 @@ const CalendarToolbar = (toolbar) => {
             <Button
               color="primary"
               className="btn-list-view"
-              onClick={goToWeekView}
+              onClick={goToListView}
               active={selectedRadio === 1}
             >
               <ListViewIcon />

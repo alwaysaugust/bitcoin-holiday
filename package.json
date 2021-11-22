@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Bitcoin Holiday",
   "private": true,
+  "homepage": "https://davidjin-ca.github.io/bitcoin-holiday",
   "dependencies": {
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/react": "^11.2.7",
@@ -14,6 +15,7 @@
     "dayjs": "^1.10.7",
     "formik": "^2.2.9",
     "front-matter": "^4.0.2",
+    "gh-pages": "^3.2.3",
     "moment": "2.29.1",
     "mousetrap": "^1.6.5",
     "node-sass": "^6.0.0",
@@ -53,6 +55,8 @@
     "yup": "^0.32.9"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
