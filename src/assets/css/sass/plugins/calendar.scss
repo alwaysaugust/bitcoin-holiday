@@ -72,6 +72,9 @@
 .rbc-day-bg {
   border-top: 1px solid var(--calendar-day-border-color);
   margin: 0 11px;
+  @include respond-below(sm) {
+    margin: 0 5px;
+  }
 }
 
 .rbc-month-header {
@@ -205,12 +208,21 @@
   text-align: left;
   border-bottom: none;
   margin: 0 10px;
+  @include respond-below(xs) {
+    font-size: 0px;
+  }
+}
+.rbc-header::first-letter {
+  font-size: 0.75rem;
 }
 
 .rbc-date-cell {
   padding: 20px 0 6px;
   text-align: left;
   margin: 0 11px;
+  @include respond-below(sm) {
+    margin-left: 6px;
+  }
 
   a, span {
     width: 28px;
@@ -295,6 +307,9 @@
 
 .rbc-event-content {
   height: 190px;
+  // @include respond-below(sm) {
+  //   height: 79px; 
+  // }
 }
 
 .rbc-cus-event-content {

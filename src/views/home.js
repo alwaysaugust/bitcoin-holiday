@@ -81,7 +81,7 @@ class Home extends React.Component {
       }
     });
     this.setState({
-      events: grouped
+      events: grouped,
     });
   }
 

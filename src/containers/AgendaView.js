@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import * as dates from 'date-arithmetic';
 import PropTypes from 'prop-types';
@@ -44,8 +46,15 @@ export const AgendaView = ({ accessors, localizer, length, date, events }) => {
     );
     return events.map((event, idx) => {
       return (
-        // eslint-disable-next-line react/no-array-index-key
-        <div key={idx} className="listview-item">
+        <a
+          type="button"
+          role="button"
+          tabIndex="0"
+          key={`list-item-${idx}`}
+          className="listview-item btn-plain"
+          onClick={() => showEventViewModalHandler(event)}
+          onKeyDown={() => showEventViewModalHandler(event)}
+        >
           {!event.isMultipleEvent ? (
             <>
               <div className="listview-item-date-wrap">
@@ -108,7 +117,7 @@ export const AgendaView = ({ accessors, localizer, length, date, events }) => {
               <span>View Event</span>
             </button>
           </div>
-        </div>
+        </a>
       );
     }, []);
   };
