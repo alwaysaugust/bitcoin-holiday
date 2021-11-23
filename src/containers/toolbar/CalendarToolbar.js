@@ -68,13 +68,13 @@ const CalendarToolbar = (toolbar) => {
   };
   const getAuthToGoogle = async () => {
     const successfull = await signInToGoogle();
-    if (successfull){
+    if (successfull) {
       publishTheCalenderEvent(multiEvents);
     }
   };
   const addToGoogle = () => {
     initClient(async (success) => {
-      if (success){
+      if (success) {
         const status = await checkSignInStatus();
         if (status) {
           publishTheCalenderEvent(multiEvents);
@@ -189,6 +189,50 @@ const CalendarToolbar = (toolbar) => {
               <ListViewIcon />
             </Button>
           </ButtonGroup>
+          {/* <span className="d-none d-lg-block"> */}
+            <Dropdown
+              isOpen={addToCalOpen}
+              toggle={() => setAddToCalOpen(!addToCalOpen)}
+              className="calendar-dropdown"
+            >
+              <DropdownToggle className="btn-add-to-calendar">
+                <span className="d-none d-lg-block">
+                  <AddIcon />
+                  <span>Add to Calendar</span>
+                </span>
+                <span className="d-lg-none">
+                  <AddIcon />
+                </span>
+              </DropdownToggle>
+
+              <DropdownMenu>
+                <div className="arrow" />
+                <div>
+                  <button
+                    type="button"
+                    className="btn btn-add-to-google"
+                    onClick={addToGoogle}
+                  >
+                    Add to Google Calendar
+                  </button>
+                  <a
+                    href={new Add2Calendar(multiEvents).getOutlookUrl()}
+                    download="download-outlook"
+                    className="btn add-to-calendar-item"
+                  >
+                    Add to Outlook
+                  </a>
+                  <a
+                    href={new Add2Calendar(multiEvents).getICalUrl()}
+                    download="download-icalendar"
+                    className="btn add-to-calendar-item"
+                  >
+                    Add to iCalendar
+                  </a>
+                </div>
+              </DropdownMenu>
+            </Dropdown>
+          {/* </span> */}
           <Dropdown
             isOpen={addToCalOpen}
             toggle={() => setAddToCalOpen(!addToCalOpen)}

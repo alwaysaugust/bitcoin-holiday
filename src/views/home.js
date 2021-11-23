@@ -84,6 +84,10 @@ class Home extends React.Component {
         grouped.push(el);
       }
     });
+    this.setState({
+      // eslint-disable-next-line react/no-unused-state
+      events: grouped,
+    });
     // eslint-disable-next-line react/destructuring-assignment
     this.props.addEvents(grouped);
     // eslint-disable-next-line react/destructuring-assignment

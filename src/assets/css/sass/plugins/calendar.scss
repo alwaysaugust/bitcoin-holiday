@@ -600,6 +600,9 @@
 .calendar-dropdown {
   display: inline-block;
   margin-left: 20px;
+  @include respond-below(md) {
+    margin-left: 0px;
+  }
 
   &.show {
     .calendar-btn {

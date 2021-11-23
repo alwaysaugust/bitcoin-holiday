@@ -604,9 +604,15 @@ button {
   padding: 0;
   margin-left: 10px;
   border: none;
+  @include respond-below(md) {
+    width: 45px;
+  }
 
   svg {
     margin-right: 9px;
+    @include respond-below(md) {
+      margin-right: 0px;
+    }
   }
   &:hover, &:active {
     opacity: .8;
