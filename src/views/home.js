@@ -47,7 +47,11 @@ class Home extends React.Component {
                 ? moment(res.attributes.date, 'YYYY-MM-DD').toDate()
                 : res.attributes.date,
             title: res.attributes.title,
-            img: res.attributes.img,
+            img:
+              res.attributes.img.startsWith('http://') ||
+              res.attributes.img.startsWith('https://')
+                ? res.attributes.img
+                : `/events/${res.attributes.img}`,
             org: res.attributes.org,
             isBitcoinEvent: res.attributes.isBitcoinEvent,
             description: res.body,
@@ -99,7 +103,8 @@ class Home extends React.Component {
   handleScroll = () => {
     const bottom =
       Math.ceil(window.innerHeight + window.scrollY) >=
-      document.documentElement.scrollHeight && window.innerHeight !== document.documentElement.scrollHeight;
+        document.documentElement.scrollHeight &&
+      window.innerHeight !== document.documentElement.scrollHeight;
 
     const { selectedDay } = this.state;
     if (bottom) {
@@ -114,6 +119,15 @@ class Home extends React.Component {
           window.scrollTo(0, 0);
         }
       );
+    }
+
+    if (
+      document.body.scrollTop > 35 ||
+      document.documentElement.scrollTop > 35
+    ) {
+      document.getElementById("big-calendar-header").classList.add("sticky");
+    } else {
+      document.getElementById("big-calendar-header").classList.remove("sticky");
     }
   };
 

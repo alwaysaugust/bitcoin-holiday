@@ -57,41 +57,37 @@ const EventComponent = ({ event }) => {
             <div className="rbc-multiple-event-wrapper">
               {event.events.map((el, idx) => {
                 return (
-                  <>
-                    <div
-                      key={idx}
-                      className="rbc-multiple-event-content d-none d-lg-block"
-                    >
-                      <span>{el.title}</span>
-                      {el.isBitcoinEvent && (
-                        <span>
-                          <img
-                            src="/assets/img/bitcoin-letter.png"
-                            alt="Bitcoin Holiday"
-                          />
-                        </span>
-                      )}
-                    </div>
-                  </>
+                  <div
+                    key={idx}
+                    className="d-none d-lg-flex rbc-multiple-event-content"
+                  >
+                    <span>{el.title}</span>
+                    {el.isBitcoinEvent && (
+                      <span>
+                        <img
+                          src="/assets/img/bitcoin-letter.png"
+                          alt="Bitcoin Holiday"
+                        />
+                      </span>
+                    )}
+                  </div>
                 );
               })}
               <div className="d-lg-none d-flex justify-content-center">
                 <div className="p-2">
                   {event.events.map((el, idx) => {
                     return (
-                      <>
-                        <span
-                          key={idx}
-                          className={cnb(
-                            `event-dot-layer-${3 + idx}`,
-                            // eslint-disable-next-line prettier/prettier
-                            {'event-dot-translate': idx > 0},
-                            'event-dot'
-                          )}
-                        >
-                          {!el.isBitcoinEvent ? <EventDot /> : <EventDotBtc />}
-                        </span>
-                      </>
+                      <span
+                        key={idx}
+                        className={cnb(
+                          `event-dot-layer-${3 + idx}`,
+                          // eslint-disable-next-line prettier/prettier
+                          {'event-dot-translate': idx > 0},
+                          'event-dot'
+                        )}
+                      >
+                        {!el.isBitcoinEvent ? <EventDot /> : <EventDotBtc />}
+                      </span>
                     );
                   })}
                 </div>

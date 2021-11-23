@@ -88,7 +88,7 @@ const CalendarToolbar = (toolbar) => {
   };
 
   return (
-    <div className="big-calendar-header">
+    <div className="big-calendar-header" id="big-calendar-header">
       <div className="d-flex justify-content-between align-items-center">
         <div className="bch-left-wrapper">
           <img
@@ -104,7 +104,7 @@ const CalendarToolbar = (toolbar) => {
           </div>
 
           <div>
-            <div className="d-none d-sm-block">
+            <div className="d-none d-sm-inline-block">
               <button
                 type="button"
                 className="btn calendar-prev-btn"
@@ -233,6 +233,42 @@ const CalendarToolbar = (toolbar) => {
               </DropdownMenu>
             </Dropdown>
           {/* </span> */}
+          <Dropdown
+            isOpen={addToCalOpen}
+            toggle={() => setAddToCalOpen(!addToCalOpen)}
+            className="ml-0 calendar-dropdown"
+          >
+            <DropdownToggle className="btn-add-to-calendar">
+              <AddIcon />
+              <span>Add to Calendar</span>
+            </DropdownToggle>
+            <DropdownMenu>
+              <div className="arrow" />
+              <div>
+                <button
+                  type="button"
+                  className="btn btn-add-to-google"
+                  onClick={addToGoogle}
+                >
+                  Add to Google Calendar
+                </button>
+                <a
+                  href={new Add2Calendar(multiEvents).getOutlookUrl()}
+                  download="download-outlook"
+                  className="btn add-to-calendar-item"
+                >
+                  Add to Outlook
+                </a>
+                <a
+                  href={new Add2Calendar(multiEvents).getICalUrl()}
+                  download="download-icalendar"
+                  className="btn add-to-calendar-item"
+                >
+                  Add to iCalendar
+                </a>
+              </div>
+            </DropdownMenu>
+          </Dropdown>
           <button
             type="button"
             className="btn btn-share d-none d-md-block"
