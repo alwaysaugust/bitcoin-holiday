@@ -146,6 +146,9 @@
     width: 511px;
     border-radius: 8px;
     position: relative;
+    @include respond-below(sm) {
+      width: 20rem;
+    }
 
     .share-header {
       position: absolute;
@@ -158,12 +161,19 @@
       border-radius: 5px;
       padding: 47px 44px 53px 41px;
       background-color: var(--modal-bg-color);
+      @include respond-below(sm) {
+        padding: 47px 20px 53px 20px;
+      }
+
 
       .share-title {
         font-size: 1.625rem;
         line-height: 1;
         font-weight: 700;
         color: var(--primary-color);
+        @include respond-below(md) {
+          font-size: 1.5rem;
+        }
       }
 
       .social-button-wrapper {
@@ -174,6 +184,9 @@
           &:hover {
             opacity: .8;
           }
+          @include respond-below(sm){
+            margin-right: 35px;
+          }
         }
       }
 
@@ -182,6 +195,9 @@
         align-items: center;
         justify-content: space-between;
         margin-top: 35px;
+        @include respond-below(md) {
+          flex-direction: column;
+        }
 
         .input-share {
           border-radius: 4.5px;
@@ -190,6 +206,9 @@
           border: 1px solid #DCDCDC;
           background: var(--modal-bg-color);
           color: var(--primary-color) !important;
+          @include respond-below(md) {
+            width: 100%; 
+          }
         }
       }
     }

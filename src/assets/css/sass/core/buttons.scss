@@ -676,6 +676,10 @@ button {
   }
 }
 
+.btn-plain {
+  border: none;
+}
+
 .btn-list-view-event-view {
   background: var(--theme-color-1);
   width: 149px;
@@ -685,6 +689,11 @@ button {
   margin-left: 10px;
   font-weight: 700;
   font-size: .75rem;
+  @include respond-below(md) {
+    opacity: 0.8;
+    margin-top: 16px;
+    margin-left: 0px;
+  }
 
   &:hover {
     opacity: .8;

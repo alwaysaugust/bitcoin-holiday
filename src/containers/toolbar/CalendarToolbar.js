@@ -9,6 +9,7 @@ import {
   DropdownMenu,
   DropdownToggle,
 } from 'reactstrap';
+import TriangleDownIcon from 'components/svg/TriangleDownIcon';
 import { connect } from 'react-redux';
 import * as Add2Calendar from 'add2calendar';
 import {
@@ -27,6 +28,7 @@ import NextIcon from '../../components/svg/NextIcon';
 import CalendarIcon from '../../components/svg/CalendarIcon';
 import ShareModal from '../ShareModal';
 import { months } from '../../constants/defaultValues';
+import '../../assets/css/sass/fix.scss';
 
 const CalendarToolbar = (toolbar) => {
   const [selectedRadio, setSelectedRadio] = useState(0);
@@ -92,7 +94,7 @@ const CalendarToolbar = (toolbar) => {
           <img
             src="/assets/logos/black.png"
             alt="Bitcoin Logo"
-            className="btc-logo"
+            className="btc-logo d-none d-md-block"
           />
           <div className="brc-header-title">
             <span className="brc-title-label">
@@ -102,32 +104,37 @@ const CalendarToolbar = (toolbar) => {
           </div>
 
           <div>
-            <button
-              type="button"
-              className="btn calendar-prev-btn"
-              onClick={goToBack}
-            >
-              <span className="theme-svg">
-                <PrevIcon />
-              </span>
-            </button>
-            <button
-              type="button"
-              className="btn calendar-next-btn"
-              onClick={goToNext}
-            >
-              <span className="theme-svg">
-                <NextIcon />
-              </span>
-            </button>
+            <div className="d-none d-sm-block">
+              <button
+                type="button"
+                className="btn calendar-prev-btn"
+                onClick={goToBack}
+              >
+                <span className="theme-svg">
+                  <PrevIcon />
+                </span>
+              </button>
+              <button
+                type="button"
+                className="btn calendar-next-btn"
+                onClick={goToNext}
+              >
+                <span className="theme-svg">
+                  <NextIcon />
+                </span>
+              </button>
+            </div>
             <Dropdown
               isOpen={dropdownOpen}
               toggle={() => setDropdownOpen(!dropdownOpen)}
-              className="calendar-dropdown"
+              className="calendar-dropdown calendar-dropdown-mobile"
             >
               <DropdownToggle className="calendar-btn">
-                <span className="theme-svg">
+                <span className="theme-svg d-none d-sm-block">
                   <CalendarIcon />
+                </span>
+                <span className="theme-svg d-block d-sm-none">
+                  <TriangleDownIcon />
                 </span>
               </DropdownToggle>
               <DropdownMenu>

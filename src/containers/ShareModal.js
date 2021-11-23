@@ -32,7 +32,7 @@ const ShareModal = ({ shareModal, setShareModal }) => {
       </div>
       <ModalBody>
         <div className="share-title">Share with friends</div>
-        <div className="social-button-wrapper">
+        <div className="social-button-wrapper d-flex flex-sm-nowrap">
           <FacebookShareButton url={shareUrl}>
             <span className="theme-svg social-icon">
               <FacebookIcon />
