@@ -69,7 +69,7 @@ class Home extends React.Component {
               description: res.body,
             };
           })
-          .catch((error) => alert(error))
+          .catch((error) => console.log(error))
       )
     );
 
