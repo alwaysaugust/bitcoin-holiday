@@ -416,7 +416,6 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-bottom: 1px solid var(--calendar-event-separator-color);
         height: 26px;
         font-weight: 700;
         font-size: .75rem;
@@ -424,10 +423,10 @@
         img {
           width: 10px;
         }
+      }
 
-        &:last-child {
-          border-bottom: 0;
-        }
+      .rbc-multiple-event-content + .rbc-multiple-event-content {
+        border-top: 1px solid var(--calendar-event-separator-color);
       }
     }
   }
@@ -477,17 +476,17 @@
     border-top: 3px solid var(--theme-color-1);
     .styles-dateWrap {
       p {
-        color: var(--theme-color-1);
+        opacity: .8;
       }
     }
     .styles-eventTitle {
-      color: var(--primary-color);
+      opacity: .8;
     }
     .styles-org {
-      color: var(--primary-color);
+      opacity: .8;
     }
     .styles-description {
-      color: var(--primary-color);
+      opacity: .8;
     }
   }
 
@@ -524,6 +523,7 @@
     font-size: 1.625rem;
     font-weight: 700;
     width: 287px;
+    color: var(--primary-color);
 
     @include respond-below(md) {
       font-size: 1.125rem;
@@ -531,6 +531,7 @@
   }
   .styles-org {
     font-size: 1rem;
+    color: var(--primary-color);
 
     @include respond-below(md) {
       font-size: 0.875rem;
@@ -540,6 +541,7 @@
     width: 496px;
     max-width: 496px;
     font-size: 0.875rem;
+    color: var(--primary-color);
 
     @include respond-below(md) {
       width: 100%;
@@ -571,6 +573,7 @@
         font-weight: 700;
         border-right: 1px solid var(--calendar-event-separator-color);
         padding: 0 21px;
+        color: var(--primary-color);
 
         img {
           margin-left: 11px;
