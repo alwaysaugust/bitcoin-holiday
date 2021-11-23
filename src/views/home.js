@@ -28,34 +28,45 @@ class Home extends React.Component {
   }
 
   async componentDidMount() {
+    await this.initData();
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  initData = async () => {
+    const { selectedDay } = this.state;
     const events = await Promise.all(
       markdownFiles.map((file) =>
         fetch(`/events/${file}`)
           .then((res) => res.text())
           .then((res) => fm(res))
-          .then((res) => ({
-            start:
+          .then((res) => {
+            const eventDate =
               typeof res.attributes.date === 'string'
                 ? moment(res.attributes.date, 'YYYY-MM-DD').toDate()
-                : res.attributes.date,
-            end:
-              typeof res.attributes.date === 'string'
-                ? moment(res.attributes.date, 'YYYY-MM-DD').toDate()
-                : res.attributes.date,
-            date:
-              typeof res.attributes.date === 'string'
-                ? moment(res.attributes.date, 'YYYY-MM-DD').toDate()
-                : res.attributes.date,
-            title: res.attributes.title,
-            img:
-              res.attributes.img.startsWith('http://') ||
-              res.attributes.img.startsWith('https://')
-                ? res.attributes.img
-                : `/events/${res.attributes.img}`,
-            org: res.attributes.org,
-            isBitcoinEvent: res.attributes.isBitcoinEvent,
-            description: res.body,
-          }))
+                : res.attributes.date;
+            const date = new Date(
+              selectedDay.getFullYear(),
+              eventDate.getMonth(),
+              eventDate.getDate()
+            );
+            return {
+              start: date,
+              end: date,
+              date: eventDate,
+              title: res.attributes.title,
+              img:
+                res.attributes.img.startsWith('http://') ||
+                res.attributes.img.startsWith('https://')
+                  ? res.attributes.img
+                  : `/events/${res.attributes.img}`,
+              isBitcoinEvent: res.attributes.isBitcoinEvent,
+              description: res.body,
+            };
+          })
           .catch((error) => alert(error))
       )
     );
@@ -63,7 +74,7 @@ class Home extends React.Component {
     const grouped = [];
     events.forEach((el) => {
       const id = grouped.findIndex(
-        (val) => val.date.getTime() === el.date.getTime()
+        (val) => val.start.getTime() === el.start.getTime()
       );
       if (id >= 0) {
         grouped[id].isMultipleEvent = true;
@@ -73,7 +84,6 @@ class Home extends React.Component {
               date: grouped[id].date,
               title: grouped[id].title,
               img: grouped[id].img,
-              org: grouped[id].org,
               isBitcoinEvent: grouped[id].isBitcoinEvent,
               description: grouped[id].description,
             },
@@ -92,43 +102,31 @@ class Home extends React.Component {
     this.props.addEvents(grouped);
     // eslint-disable-next-line react/destructuring-assignment
     this.props.addAllEvents(events);
-
-    window.addEventListener('scroll', this.handleScroll);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-  }
+  };
 
   handleScroll = () => {
-    // const bottom =
-    //   Math.ceil(window.innerHeight + window.scrollY) >=
-    //   document.documentElement.scrollHeight &&
-    //   window.innerHeight !== document.documentElement.scrollHeight;
-
-    // const { selectedDay } = this.state;
-    // if (bottom) {
-    //   this.setState({
-    //       selectedDay: new Date(
-    //         selectedDay.getFullYear(),
-    //         selectedDay.getMonth() + 1,
-    //         1
-    //       ),
-    //     },
-    //     () => {
-    //       window.scrollTo(0, 0);
-    //     }
-    //   );
-    // }
-
     if (
       document.body.scrollTop > 35 ||
       document.documentElement.scrollTop > 35
     ) {
-      document.getElementById("big-calendar-header").classList.add("sticky");
+      document.getElementById('big-calendar-header').classList.add('sticky');
     } else {
-      document.getElementById("big-calendar-header").classList.remove("sticky");
+      document.getElementById('big-calendar-header').classList.remove('sticky');
     }
+  };
+
+  onNavigate = (day) => {
+    const { selectedDay } = this.state;
+    this.setState(
+      {
+        selectedDay: day,
+      },
+      async () => {
+        if (selectedDay.getFullYear() !== day.getFullYear()) {
+          await this.initData();
+        }
+      }
+    );
   };
 
   render() {
@@ -161,11 +159,7 @@ class Home extends React.Component {
                     month: true,
                     agenda: AgendaView,
                   }}
-                  onNavigate={(day) => {
-                    this.setState({
-                      selectedDay: day,
-                    });
-                  }}
+                  onNavigate={(day) => this.onNavigate(day)}
                 />
               </div>
             </Colxx>

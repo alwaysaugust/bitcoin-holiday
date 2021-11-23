@@ -31,7 +31,7 @@ const EventViewModal = ({ eventModal, setEventModal, eventDetail }) => {
             </span>
           </button>
           <div className="header-title">
-            What happened in {eventDetail !== undefined ? moment(eventDetail.org).format('MMMM') : ''}?
+            What happened in {eventDetail !== undefined ? moment(eventDetail.date).format('MMMM') : ''}?
           </div>
           <button
             type="button"
@@ -58,7 +58,7 @@ const EventViewModal = ({ eventModal, setEventModal, eventDetail }) => {
               </div>
               <div className="event-org">
                 {el !== undefined
-                  ? moment(el.org).format('MMMM Do, YYYY')
+                  ? moment(el.date).format('MMMM Do, YYYY')
                   : ''}
               </div>
               <div className="separator" />

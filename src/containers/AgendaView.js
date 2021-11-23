@@ -75,7 +75,7 @@ export const AgendaView = ({ accessors, localizer, length, date, events }) => {
                     {accessors.title(event)}
                   </div>
                   <div className="styles-org">
-                    {moment(event.org).format('MMMM Do, YYYY')}
+                    {moment(event.date).format('MMMM Do, YYYY')}
                   </div>
                 </div>
               </div>

@@ -75,7 +75,7 @@ const EventComponent = ({ event }) => {
                 </div>
               </div>
               <div className="rbc-org-cell d-none d-lg-block">
-                <span>{moment(event.org).format('MMMM Do, YYYY')}</span>
+                <span>{moment(event.date).format('MMMM Do, YYYY')}</span>
               </div>
               <div className="d-none d-lg-block">
                 <div className="rbc-description-cell">{event.description}</div>
