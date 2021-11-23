@@ -88,7 +88,8 @@ const CalendarToolbar = (toolbar) => {
   };
 
   return (
-    <div className="big-calendar-header" id="big-calendar-header">
+    // eslint-disable-next-line react/destructuring-assignment
+    <div className={`big-calendar-header ${toolbar.view}`} id="big-calendar-header">
       <div className="d-flex justify-content-between align-items-center">
         <div className="bch-left-wrapper">
           <img

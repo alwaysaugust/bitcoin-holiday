@@ -135,6 +135,22 @@
       }
     }
   }
+
+  @include respond-below(sm) {
+    width: 100%;
+
+    .modal-body {
+      padding: 15px 20px;
+
+      .section-header {
+        padding: 15px 0 20px 0;
+      }
+      .event-title {
+        font-size: 1.5rem !important;
+        margin-top: 10px !important;
+      }
+    }
+  }
 }
 
 .share-modal {
@@ -172,7 +188,7 @@
         font-weight: 700;
         color: var(--primary-color);
         @include respond-below(md) {
-          font-size: 1.5rem;
+          font-size: 1.5rem !important;
         }
       }
 
@@ -207,7 +223,7 @@
           background: var(--modal-bg-color);
           color: var(--primary-color) !important;
           @include respond-below(md) {
-            width: 100%; 
+            width: 100%;
           }
         }
       }

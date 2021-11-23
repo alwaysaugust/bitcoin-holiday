@@ -1,12 +1,14 @@
 /* eslint-disable react/no-array-index-key */
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, ModalBody } from 'reactstrap';
 import moment from 'moment';
 
 import ArrowLeftIcon from '../components/svg/ArrowLeftIcon';
 import ShareIcon from '../components/svg/ShareIcon';
+import ShareModal from './ShareModal';
 
 const EventViewModal = ({ eventModal, setEventModal, eventDetail }) => {
+  const [shareModal, setShareModal] = useState(false);
   const events = eventDetail.isMultipleEvent
     ? eventDetail.events
     : [eventDetail];
@@ -31,7 +33,11 @@ const EventViewModal = ({ eventModal, setEventModal, eventDetail }) => {
           <div className="header-title">
             What happened in {eventDetail !== undefined ? moment(eventDetail.org).format('MMMM') : ''}?
           </div>
-          <button type="button" className="btn btn-empty p-0">
+          <button
+            type="button"
+            className="btn btn-empty p-0"
+            onClick={() => setShareModal(!shareModal)}
+          >
             <span className="theme-svg">
               <ShareIcon />
             </span>
@@ -63,6 +69,8 @@ const EventViewModal = ({ eventModal, setEventModal, eventDetail }) => {
           );
         })}
       </ModalBody>
+
+      <ShareModal shareModal={shareModal} setShareModal={setShareModal} />
     </Modal>
   );
 };

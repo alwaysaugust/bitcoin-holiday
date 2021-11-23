@@ -131,9 +131,11 @@ export const AgendaView = ({ accessors, localizer, length, date, events }) => {
 
   return (
     <div>
-      {filteredEvents.length !== 0
-        ? range.map((day, idx) => renderDay(day, filteredEvents, idx))
-        : 'No event dates in range'}
+      {filteredEvents.length !== 0 ?
+        range.map((day, idx) => renderDay(day, filteredEvents, idx))
+        : (
+        <div className="no-event-in-range">No event dates in range</div>
+      )}
 
       <EventViewModal
         eventModal={eventModal}

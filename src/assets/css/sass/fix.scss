@@ -17,5 +17,5 @@ div.rbc-cus-event-cell .event-content-wrapper .rbc-date-cell {
 }
 @import 'fix-event-dot-translate.scss';
 .event-dot-translate {
-  transform: translate(20%,0);
+  margin-left: -5px;
 }

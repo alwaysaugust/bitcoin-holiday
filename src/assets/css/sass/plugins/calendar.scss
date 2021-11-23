@@ -71,6 +71,11 @@
   }
 
   &.sticky {
+
+    &.agenda {
+      border-bottom: 1px solid var(--month-header-border-color);
+    }
+
     .brc-month-name-label {
       font-size: 1.875rem;
     }
@@ -249,9 +254,6 @@
   padding: 20px 0 6px;
   text-align: left;
   margin: 0 11px;
-  @include respond-below(sm) {
-    margin-left: 6px;
-  }
 
   a, span {
     width: 28px;
@@ -263,6 +265,16 @@
     display: inline-block;
     font-size: 25px;
     line-height: 1;
+  }
+
+  @include respond-below(sm) {
+    margin-left: 6px;
+    padding: 13px 0 6px;
+
+    a, span {
+      font-size: 1rem !important;
+      height: 16px;
+    }
   }
 }
 
@@ -337,9 +349,9 @@
 
 .rbc-event-content {
   height: 190px;
-  // @include respond-below(sm) {
-  //   height: 79px;
-  // }
+   @include respond-below(sm) {
+     height: 78px;
+   }
 }
 
 .rbc-cus-event-content {
@@ -438,7 +450,7 @@
     right: 0;
     bottom: 0;
     padding: 11px;
-    display: none !important;
+    display: none;
   }
 
   &:hover {
@@ -451,8 +463,24 @@
     }
 
     .event-btn-wrapper {
-      display: block !important;
+      display: block;
     }
+  }
+
+  @include respond-below(md) {
+    display: none;
+  }
+}
+
+.mobile-rbc-cus-event-cell {
+  display: none;
+  height: 100%;
+  color: var(--primary-color);
+  position: relative;
+
+  @include respond-below(md) {
+    display: block;
+    padding-top: 35px;
   }
 }
 
@@ -552,6 +580,10 @@
   }
   .styles-btn-div {
     visibility: hidden;
+
+    @include respond-below(md) {
+      display: none;
+    }
   }
   &:hover {
     background-color: var(--calendar-event-bg-color);
@@ -560,6 +592,10 @@
     }
     .styles-btn-div {
       visibility: visible;
+
+      @include respond-below(md) {
+        display: none;
+      }
     }
   }
 
@@ -586,6 +622,23 @@
 
         &:last-child {
           border-right: 0;
+        }
+      }
+
+      @include respond-below(md) {
+        flex-direction: column;
+        align-items: unset;
+
+        .listview-ml-item {
+          display: flex;
+          justify-content: space-between;
+          border-right: 0;
+          border-bottom: 1px solid var(--calendar-event-separator-color);
+          padding: 8px 0;
+
+          &:last-child {
+            border-bottom: 0;
+          }
         }
       }
     }
@@ -673,4 +726,12 @@
     color: var(--primary-color);
     border-color: var(--small-calendar-border-color) !important;
   }
+}
+
+.no-event-in-range {
+  padding: 10px 85px;
+  height: 176px;
+  display: flex;
+  border-top: 1px solid var(--primary-color);
+  font-size: .875rem;
 }

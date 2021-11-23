@@ -462,7 +462,10 @@
       align-items: center;
       .btn-add-to-calendar {
         margin: 0;
-        flex: 1 1 0%;
+        flex: 1 1 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
 

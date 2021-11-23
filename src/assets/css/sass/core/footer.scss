@@ -1,24 +1,9 @@
 body {
   max-width: $body-width;
   margin: auto;
-  min-height: calc(100% - 150px);
+  min-height: 100%;
   position: relative;
-
-  @include respond-below(xl) {
-    min-height: calc(100% - 130px);
-  }
-
-  @include respond-below(lg) {
-    min-height: calc(100% - 110px);
-  }
-
-  @include respond-below(sm) {
-    min-height: calc(100% - 85px);
-  }
-
-  @include respond-below(xs) {
-    //padding-bottom: 60px;
-  }
+  background: var(--background-color);
 
   &.no-footer {
     padding-bottom: initial;

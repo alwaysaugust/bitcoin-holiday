@@ -15,10 +15,12 @@ import AddIcon from '../../components/svg/AddIcon';
 import ShareIcon from '../../components/svg/ShareIcon';
 import DarkSwitch from '../toolbar/DarkSwitch';
 import ShareModal from '../ShareModal';
+import AddToCalendarModal from '../AddToCalendarModal';
 
 const TopNav = () => {
   const [enableMobileNav, setEnableMobileNav] = useState(false);
   const [shareModal, setShareModal] = useState(false);
+  const [addToCalendarModal, setAddToCalendarModal] = useState(false);
   const showMobileNavHandler = () => {
     setEnableMobileNav(true);
   };
@@ -122,7 +124,7 @@ const TopNav = () => {
               <button
                 type="button"
                 className="btn btn-add-to-calendar"
-                // onClick={() => setAddToCalendarModal(!addToCalendarModal)}
+                onClick={() => setAddToCalendarModal(!addToCalendarModal)}
               >
                 <AddIcon />
                 <span>Add to Calendar</span>
@@ -143,6 +145,10 @@ const TopNav = () => {
       </nav>
 
       <ShareModal shareModal={shareModal} setShareModal={setShareModal} />
+      <AddToCalendarModal
+        addToCalendarModal={addToCalendarModal}
+        setAddToCalendarModal={setAddToCalendarModal}
+      />
     </>
   );
 };
