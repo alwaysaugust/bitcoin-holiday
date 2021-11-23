@@ -29,81 +29,17 @@ const TopNav = () => {
   };
   return (
     <>
-      <nav className="navbar  d-none d-md-flex">
-        <div className="d-flex align-items-center navbar-left">
-          <span>Made with</span>
-          <img alt="CoinKite" src="/assets/img/heart.png" className="mx-1" />
-          <span>by CoinKite</span>
-        </div>
-        <div className="navbar-right">
-          <Nav>
-            {navItems &&
-              navItems.map((item) => {
-                return (
-                  <NavItem key={item.id}>
-                    <a
-                      key={item.id}
-                      href={item.to}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      <IntlMessages id={item.label} />
-                    </a>
-                  </NavItem>
-                );
-              })}
-          </Nav>
-        </div>
-      </nav>
-      <nav className="mobile-navbar d-flex d-md-none">
-        {!enableMobileNav && (
-          <button
-            type="button"
-            className="hamburger-icon-btn"
-            onClick={() => {
-              showMobileNavHandler();
-            }}
-          >
-            <HamburgerIcon />
-          </button>
-        )}
-        {enableMobileNav && (
-          <button
-            type="button"
-            className="close-icon-btn"
-            onClick={() => {
-              closeMobileNavHandler();
-            }}
-          >
-            <CloseIcon />
-          </button>
-        )}
-
-        <img
-          src="/assets/logos/black.png"
-          alt="Bitcoin Logo"
-          className="btc-logo-mobile"
-        />
-        {enableMobileNav && (
-          <div className="mobile-navbar-content">
-            <div className="mobile-navbar-li">
-              <div
-                className="d-flex align-items-center"
-                style={{
-                  paddingLeft: 20,
-                  marginBottom: 10,
-                  marginTop: 9,
-                  fontWeight: 'bold',
-                }}
-              >
-                <span>Made with</span>
-                <img
-                  alt="CoinKite"
-                  src="/assets/img/heart.png"
-                  className="mx-1"
-                />
-                <span>by CoinKite</span>
-              </div>
+      <nav className="navbar  d-none d-md-block">
+        <div className="navbar-content">
+          <div className="d-flex align-items-center navbar-left">
+            <a href="http://coinkite.com/" target="_blank" rel="noreferrer">
+              <span>Made with</span>
+              <img alt="CoinKite" src="/assets/img/heart.png" className="mx-1" />
+              <span>by CoinKite</span>
+            </a>
+          </div>
+          <div className="navbar-right">
+            <Nav>
               {navItems &&
                 navItems.map((item) => {
                   return (
@@ -119,29 +55,91 @@ const TopNav = () => {
                     </NavItem>
                   );
                 })}
-            </div>
-            <div className="btn-board">
-              <button
-                type="button"
-                className="btn btn-add-to-calendar"
-                onClick={() => setAddToCalendarModal(!addToCalendarModal)}
-              >
-                <AddIcon />
-                <span>Add to Calendar</span>
-              </button>
-              <button
-                type="button"
-                className="btn btn-share"
-                onClick={() => setShareModal(!shareModal)}
-              >
-                <ShareIcon />
-              </button>
-            </div>
-            <div className="mobile-theme-toggle">
-              <DarkSwitch className="d-flex" />
-            </div>
+            </Nav>
           </div>
-        )}
+        </div>
+      </nav>
+      <nav className="mobile-navbar d-block d-md-none">
+        <div className="navbar-left">
+          <a href="http://coinkite.com/" target="_blank" rel="noreferrer">
+            <span>Made with</span>
+            <img alt="CoinKite" src="/assets/img/heart.png" className="mx-1" />
+            <span>by CoinKite</span>
+          </a>
+        </div>
+        <div className="mobile-navbar-content-wrapper">
+          {!enableMobileNav && (
+            <button
+              type="button"
+              className="btn btn-empty hamburger-icon-btn"
+              onClick={() => {
+                showMobileNavHandler();
+              }}
+            >
+              <HamburgerIcon />
+            </button>
+          )}
+          {enableMobileNav && (
+            <button
+              type="button"
+              className="btn btn-empty close-icon-btn"
+              onClick={() => {
+                closeMobileNavHandler();
+              }}
+            >
+              <CloseIcon />
+            </button>
+          )}
+
+          <a href="/" className="btc-logo-mobile">
+            <img
+              src="/assets/logos/black.png"
+              alt="Bitcoin Logo"
+              className="btc-logo-mobile"
+            />
+          </a>
+          {enableMobileNav && (
+            <div className="mobile-navbar-content">
+              <div className="mobile-navbar-li">
+                {navItems &&
+                  navItems.map((item) => {
+                    return (
+                      <NavItem key={item.id}>
+                        <a
+                          key={item.id}
+                          href={item.to}
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        >
+                          <IntlMessages id={item.label} />
+                        </a>
+                      </NavItem>
+                    );
+                  })}
+              </div>
+              <div className="btn-board">
+                <button
+                  type="button"
+                  className="btn btn-add-to-calendar"
+                  onClick={() => setAddToCalendarModal(!addToCalendarModal)}
+                >
+                  <AddIcon />
+                  <span>Add to Calendar</span>
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-share"
+                  onClick={() => setShareModal(!shareModal)}
+                >
+                  <ShareIcon />
+                </button>
+              </div>
+              <div className="mobile-theme-toggle">
+                <DarkSwitch className="d-flex" />
+              </div>
+            </div>
+          )}
+        </div>
       </nav>
 
       <ShareModal shareModal={shareModal} setShareModal={setShareModal} />

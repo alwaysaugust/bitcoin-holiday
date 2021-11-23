@@ -4,11 +4,11 @@ module.exports = {
 
   /* 02.Nav */
   'nav.bitcoin-security': 'Bitcoin Security',
-  'nav.coldcard-wallet': 'COLDCARD Wallet',
+  'nav.coldcard-wallet': 'COLDCARD',
   'nav.blocklock': 'BLOCKCLOCK',
   'nav.opendime': 'OPENDIME',
   'nav.seedplate': 'SEEDPLATE',
-  'nav.coinkite-store': '6% OFF Coinkite Store',
+  'nav.coinkite-store': '6% OFF COINKITE STORE',
 
   /* 03.Error Page */
   'pages.error-title': 'Ooops... looks like an error occurred!',

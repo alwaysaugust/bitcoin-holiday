@@ -1,15 +1,22 @@
 .navbar {
   background: var(--navbar-bg-color);
-  height: $navbar-height;
   color: var(--navbar-color);
-  padding: 5px $body-x-padding;
-  max-width: $body-width;
-  margin: auto;
   position: sticky;
   top: 0;
   z-index: 1031;
+  padding: 0;
 
   @include depth(1);
+
+  .navbar-content {
+    display: flex;
+    max-width: $body-width;
+    margin: auto;
+    justify-content: space-between;
+    padding: 5px $body-x-padding;
+    height: $navbar-height;
+
+  }
 
   #notificationDropdown {
     width: 260px;
@@ -100,6 +107,14 @@
   }
 
   .navbar-left {
+    a {
+      color: var(--navbar-color);
+
+      &:hover {
+        text-decoration: underline;
+        opacity: .8;
+      }
+    }
   }
 
   .navbar-right {
@@ -390,17 +405,35 @@
 }
 
 .mobile-navbar {
-  padding: 14px 20px;
   align-items: center;
   background-color: var(--main-bg-color);
   position: sticky;
   top: 0;
   z-index: 1031;
 
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--navbar-bg-color);
+    padding: 5px;
+    height: 35px;
+
+    a {
+      color: var(--navbar-color);
+    }
+  }
+
+  .mobile-navbar-content-wrapper {
+    padding: 14px 21px;
+    display: flex;
+    position: relative;
+  }
+
   .btc-logo-mobile {
     display: flex;
-    width: 30px;
-    height: 30px;
+    width: 29px;
+    height: 29px;
     margin-left: auto;
     margin-right: auto;
     // position: absolute;
@@ -408,10 +441,12 @@
     // transform: translate(-50%);
   }
   .hamburger-icon-btn {
+    position: absolute;
     border: none;
     background-color: transparent;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
+    top: 19px;
+
     svg {
       path {
         fill: var(--primary-color);
@@ -421,8 +456,10 @@
   .close-icon-btn {
     border: none;
     background-color: transparent;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
+    position: absolute;
+    top: 19px;
+
     svg {
       path {
         fill: var(--primary-color);
@@ -431,8 +468,8 @@
   }
   .mobile-navbar-content {
     position: absolute;
-    left: 0px;
-    top: 58px;
+    left: 0;
+    top: 57px;
     width: 100%;
     z-index: 10;
     height: calc(100vh - 58px);

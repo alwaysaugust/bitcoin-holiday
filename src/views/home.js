@@ -53,16 +53,18 @@ class Home extends React.Component {
               eventDate.getMonth(),
               eventDate.getDate()
             );
+            // eslint-disable-next-line no-nested-ternary
+            const img = res.attributes.img
+              ? (res.attributes.img.startsWith('http://') ||
+                res.attributes.img.startsWith('https://')
+                ? res.attributes.img
+                : `/events/${res.attributes.img}`) : '';
             return {
               start: date,
               end: date,
               date: eventDate,
               title: res.attributes.title,
-              img:
-                res.attributes.img.startsWith('http://') ||
-                res.attributes.img.startsWith('https://')
-                  ? res.attributes.img
-                  : `/events/${res.attributes.img}`,
+              img,
               isBitcoinEvent: res.attributes.isBitcoinEvent,
               description: res.body,
             };

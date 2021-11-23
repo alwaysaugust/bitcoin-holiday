@@ -2,19 +2,14 @@
 
 const data = [
   {
-    id: 'bitcoin-security',
-    label: 'nav.bitcoin-security',
-    to: `https://google.com`,
+    id: 'blocklock',
+    label: 'nav.blocklock',
+    to: `https://blockclockmini.com/`,
   },
   {
     id: 'coldcard-wallet',
     label: 'nav.coldcard-wallet',
     to: `https://coldcard.com/`,
-  },
-  {
-    id: 'blocklock',
-    label: 'nav.blocklock',
-    to: `https://blockclockmini.com/`,
   },
   {
     id: 'opendime',

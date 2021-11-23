@@ -37,6 +37,7 @@ const EventComponent = ({ event }) => {
               <div className="p-2">
                 {event.events.map((el, idx) => {
                   return (
+                    idx > 2 ? <></> :
                     <span
                       key={idx}
                       className={cnb(
@@ -94,6 +95,7 @@ const EventComponent = ({ event }) => {
             <div className="rbc-multiple-event-wrapper">
               {event.events.map((el, idx) => {
                 return (
+                  idx > 2 ? <></> :
                   <div
                     key={idx}
                     className="d-none d-lg-flex rbc-multiple-event-content"

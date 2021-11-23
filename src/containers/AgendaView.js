@@ -89,6 +89,7 @@ export const AgendaView = ({ accessors, localizer, length, date, events }) => {
               <div className="listview-ml-item-wrapper">
                 {event.events.map((el, index) => {
                   return (
+                    index > 2 ? <></> :
                     // eslint-disable-next-line react/no-array-index-key
                     <div key={index} className="listview-ml-item">
                       <span>{el.title}</span>

@@ -48,6 +48,9 @@ const CalendarToolbar = (toolbar) => {
   const goToNext = () => {
     toolbar.onNavigate('NEXT');
   };
+  const goToCurrent = () => {
+    toolbar.onNavigate('TODAY');
+  };
   const goToListView = () => {
     setSelectedRadio(1);
     toolbar.onView('agenda');
@@ -92,11 +95,14 @@ const CalendarToolbar = (toolbar) => {
     <div className={`big-calendar-header ${toolbar.view}`} id="big-calendar-header">
       <div className="d-flex justify-content-between align-items-center">
         <div className="bch-left-wrapper">
-          <img
-            src="/assets/logos/black.png"
-            alt="Bitcoin Logo"
-            className="btc-logo d-none d-md-block"
-          />
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+          <span className="goto-current-span" onClick={goToCurrent}>
+            <img
+              src="/assets/logos/black.png"
+              alt="Bitcoin Logo"
+              className="btc-logo d-none d-md-block"
+            />
+          </span>
           <div className="brc-header-title">
             <span className="brc-title-label">
               <b>Bitcoin</b> Holiday Calendar

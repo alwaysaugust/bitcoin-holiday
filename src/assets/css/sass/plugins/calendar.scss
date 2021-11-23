@@ -45,7 +45,7 @@
     font-weight: bold;
 
     @include respond-below(sm) {
-      font-size: 1.875rem;
+      font-size: 2rem;
       margin-right: 10px;
     }
   }
@@ -56,7 +56,7 @@
     display: block;
 
     @include respond-below(sm) {
-      font-size: 0.75rem;
+      font-size: 0.875rem;
     }
   }
 
@@ -77,10 +77,10 @@
     }
 
     .brc-month-name-label {
-      font-size: 1.875rem;
+      font-size: 2rem;
     }
     .brc-title-label {
-      font-size: .75rem;
+      font-size: .875rem;
     }
     .btc-logo {
       width: 41px;
@@ -94,7 +94,7 @@
     padding-left: 20px;
     padding-right: 20px;
     margin-top: 0;
-    top: 56px;
+    top: 91px;
   }
 
 }
@@ -219,8 +219,7 @@
 }
 
 .rbc-off-range {
-  color: $primary-color;
-  opacity: 0.3;
+  color: var(--calendar-off-range-color) !important;
 }
 
 .rbc-day-bg + .rbc-day-bg,
@@ -265,6 +264,7 @@
     display: inline-block;
     font-size: 25px;
     line-height: 1;
+    font-family: 'Austin Web', 'Inter', sans-serif;
   }
 
   @include respond-below(sm) {
@@ -499,7 +499,7 @@
   height: 176px;
   display: flex;
   align-items: center;
-  border-top: 1px solid var(--primary-color);
+  border-top: 1px solid var(--calendar-event-separator-color);
   // border-bottom: 1px solid var(--primary-color);
   &:hover {
     border-top: 3px solid var(--theme-color-1);
@@ -734,4 +734,8 @@
   display: flex;
   border-top: 1px solid var(--primary-color);
   font-size: .875rem;
+}
+
+.goto-current-span {
+  cursor: pointer;
 }

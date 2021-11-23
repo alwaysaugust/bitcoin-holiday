@@ -1,11 +1,13 @@
 main {
-  margin-left: $sub-menu-width + $main-menu-width + $main-margin;
-  margin-right: $main-margin;
-  margin-bottom: $main-margin;
+  //margin-left: $sub-menu-width + $main-menu-width + $main-margin;
+  //margin-right: $main-margin;
+  //margin-bottom: $main-margin;
   transition: margin-left $menu-collapse-time;
   //padding-left: $body-x-padding;
   //padding-right: $body-x-padding;
   background: var(--main-bg-color);
+  max-width: $body-width;
+  margin: auto;
 
   &.sub-hidden {
     margin-left: $main-menu-width + $main-margin;
