@@ -367,14 +367,9 @@
     height: $navbar-height-lg;
   }
 
-  @include respond-above(md) {
-    height: auto;
-  }
-
   @include respond-below(md) {
     padding-left: 20px;
     padding-right: 20px;
-    height: auto;
   }
 
   @include respond-below(sm) {

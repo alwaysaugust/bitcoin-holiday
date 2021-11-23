@@ -603,13 +603,15 @@ button {
   color: #fff;
   padding: 0;
   margin-left: 10px;
+  border: none;
 
   svg {
     margin-right: 9px;
   }
-  &:hover {
+  &:hover, &:active {
     opacity: .8;
     color: #fff;
+    background-color: var(--theme-color-1) !important;
   }
 }
 
@@ -698,4 +700,42 @@ button {
 .triangle-down-btn {
   border: none;
   background-color: transparent;
+}
+
+.add-to-calendar-item, .btn-add-to-google {
+  background: var(--theme-color-1);
+  width: 233px;
+  height: 32px;
+  margin-bottom: 12px;
+  display: block;
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 700;
+  padding: 0;
+  line-height: 26px;
+
+  &:hover {
+    opacity: .8;
+    color: #fff;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.btn-month-update, {
+  padding: 0;
+  background: var(--theme-color-1);
+  width: 233px;
+  height: 32px;
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 700;
+  line-height: 26px;
+
+  &:hover {
+    opacity: .8;
+    color: #fff;
+  }
 }
