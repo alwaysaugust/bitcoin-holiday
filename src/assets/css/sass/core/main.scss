@@ -1,6 +1,5 @@
 main {
   margin-left: $sub-menu-width + $main-menu-width + $main-margin;
-  margin-top: $navbar-height;
   margin-right: $main-margin;
   margin-bottom: $main-margin;
   transition: margin-left $menu-collapse-time;
@@ -22,19 +21,12 @@ main {
   }
 
   @include respond-below(xl) {
-    margin-left: $sub-menu-width-lg + $main-menu-width-lg + $main-margin-lg;
-    margin-right: $main-margin-lg;
-    margin-top: $main-margin-lg + $navbar-height-lg -10;
-    margin-bottom: 30px;
-    padding-top: 20px;
+
   }
 
   @include respond-below(lg) {
-    margin-left: $sub-menu-width-md + $main-menu-width-md + $main-margin-md;
-    margin-right: $main-margin-md;
-    //margin-top: $main-margin-md + $navbar-height-md -10;
-    margin-bottom: 20px;
-    margin-top: 50px;
+
+    min-width: 1200px;
   }
 
   @include respond-below(sm) {
@@ -43,6 +35,7 @@ main {
     //margin-top: $main-margin-xs + $navbar-height-xs !important;
     margin-bottom: 0;
     margin-top: 0;
+    min-width: auto;
   }
 
   @include respond-below(xs) {

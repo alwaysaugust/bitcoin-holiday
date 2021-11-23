@@ -26,8 +26,8 @@ const TopNav = () => {
     setEnableMobileNav(false);
   };
   return (
-    <div>
-      <nav className="navbar fixed-top d-none d-md-block d-xl-flex">
+    <>
+      <nav className="navbar  d-none d-md-flex">
         <div className="d-flex align-items-center navbar-left">
           <span>Made with</span>
           <img alt="CoinKite" src="/assets/img/heart.png" className="mx-1" />
@@ -138,9 +138,8 @@ const TopNav = () => {
         )}
       </nav>
 
-
       <ShareModal shareModal={shareModal} setShareModal={setShareModal} />
-    </div>
+    </>
   );
 };
 

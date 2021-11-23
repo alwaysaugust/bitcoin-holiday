@@ -14,6 +14,7 @@ body {
   font-weight: 400;
   color: var(--primary-color);
   background: $background-color;
+  scroll-behavior: smooth;
 
   &.background {
     height: 100%;

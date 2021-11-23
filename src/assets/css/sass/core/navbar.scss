@@ -5,6 +5,10 @@
   padding: 5px $body-x-padding;
   max-width: $body-width;
   margin: auto;
+  position: sticky;
+  top: 0;
+  z-index: 1031;
+
   @include depth(1);
 
   #notificationDropdown {
@@ -365,11 +369,18 @@
 
   @include respond-below(xl) {
     height: $navbar-height-lg;
+    min-width: 1200px;
+
+  }
+
+  @include respond-below(lg) {
+
   }
 
   @include respond-below(md) {
     padding-left: 20px;
     padding-right: 20px;
+    min-width: auto;
   }
 
   @include respond-below(sm) {

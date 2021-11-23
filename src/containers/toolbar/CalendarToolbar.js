@@ -88,7 +88,7 @@ const CalendarToolbar = (toolbar) => {
   };
 
   return (
-    <div className="big-calendar-header">
+    <div className="big-calendar-header" id="big-calendar-header">
       <div className="d-flex justify-content-between align-items-center">
         <div className="bch-left-wrapper">
           <img
@@ -104,7 +104,7 @@ const CalendarToolbar = (toolbar) => {
           </div>
 
           <div>
-            <div className="d-none d-sm-block">
+            <div className="d-none d-sm-inline-block">
               <button
                 type="button"
                 className="btn calendar-prev-btn"
@@ -192,7 +192,7 @@ const CalendarToolbar = (toolbar) => {
           <Dropdown
             isOpen={addToCalOpen}
             toggle={() => setAddToCalOpen(!addToCalOpen)}
-            className="calendar-dropdown"
+            className="ml-0 calendar-dropdown"
           >
             <DropdownToggle className="btn-add-to-calendar">
               <AddIcon />
