@@ -190,58 +190,21 @@ const CalendarToolbar = (toolbar) => {
             </Button>
           </ButtonGroup>
           {/* <span className="d-none d-lg-block"> */}
-            <Dropdown
-              isOpen={addToCalOpen}
-              toggle={() => setAddToCalOpen(!addToCalOpen)}
-              className="calendar-dropdown"
-            >
-              <DropdownToggle className="btn-add-to-calendar">
-                <span className="d-none d-lg-block">
-                  <AddIcon />
-                  <span>Add to Calendar</span>
-                </span>
-                <span className="d-lg-none">
-                  <AddIcon />
-                </span>
-              </DropdownToggle>
-
-              <DropdownMenu>
-                <div className="arrow" />
-                <div>
-                  <button
-                    type="button"
-                    className="btn btn-add-to-google"
-                    onClick={addToGoogle}
-                  >
-                    Add to Google Calendar
-                  </button>
-                  <a
-                    href={new Add2Calendar(multiEvents).getOutlookUrl()}
-                    download="download-outlook"
-                    className="btn add-to-calendar-item"
-                  >
-                    Add to Outlook
-                  </a>
-                  <a
-                    href={new Add2Calendar(multiEvents).getICalUrl()}
-                    download="download-icalendar"
-                    className="btn add-to-calendar-item"
-                  >
-                    Add to iCalendar
-                  </a>
-                </div>
-              </DropdownMenu>
-            </Dropdown>
-          {/* </span> */}
           <Dropdown
             isOpen={addToCalOpen}
             toggle={() => setAddToCalOpen(!addToCalOpen)}
-            className="ml-0 calendar-dropdown"
+            className="calendar-dropdown add-to-calendar-dropdown ml-0"
           >
             <DropdownToggle className="btn-add-to-calendar">
-              <AddIcon />
-              <span>Add to Calendar</span>
+              <span className="d-none d-lg-block">
+                <AddIcon />
+                <span>Add to Calendar</span>
+              </span>
+              <span className="d-lg-none">
+                <AddIcon />
+              </span>
             </DropdownToggle>
+
             <DropdownMenu>
               <div className="arrow" />
               <div>
@@ -269,6 +232,7 @@ const CalendarToolbar = (toolbar) => {
               </div>
             </DropdownMenu>
           </Dropdown>
+          {/* </span> */}
           <button
             type="button"
             className="btn btn-share d-none d-md-block"

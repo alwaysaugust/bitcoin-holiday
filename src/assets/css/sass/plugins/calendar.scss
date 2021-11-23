@@ -89,6 +89,7 @@
     padding-left: 20px;
     padding-right: 20px;
     margin-top: 0;
+    top: 56px;
   }
 
 }
@@ -597,11 +598,17 @@
   }
 }
 
+.add-to-calendar-dropdown {
+  @include respond-below(md) {
+    display: none !important;
+  }
+}
+
 .calendar-dropdown {
   display: inline-block;
   margin-left: 20px;
   @include respond-below(md) {
-    margin-left: 0px;
+    margin-left: 0;
   }
 
   &.show {
@@ -642,6 +649,13 @@
       &:before {
         top: 0;
         border-width: 0 .5rem .5rem;
+      }
+    }
+
+    @include respond-below(md) {
+      left: -85px !important;
+      .arrow {
+        left: 92px !important;
       }
     }
   }

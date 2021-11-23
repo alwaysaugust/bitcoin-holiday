@@ -1,12 +1,18 @@
 // eslint-disable-next-line import/named
-import { API_KEY, CLIENT_ID, DISCOVERY_DOCS, SCOPES } from '../constants/defaultValues';
+import {
+  API_KEY,
+  CLIENT_ID,
+  DISCOVERY_DOCS,
+  SCOPES,
+} from '../constants/defaultValues';
 
 const { gapi } = window;
 
 export function initClient(callback) {
   gapi.load('client:auth2', () => {
     try {
-      gapi.client.init({
+      gapi.client
+        .init({
           apiKey: API_KEY,
           clientId: CLIENT_ID,
           discoveryDocs: DISCOVERY_DOCS,
@@ -42,7 +48,9 @@ export const checkSignInStatus = async () => {
 // eslint-disable-next-line consistent-return
 export const signInToGoogle = async () => {
   try {
-    const googleuser = await gapi.auth2.getAuthInstance().signIn({prompt:'consent'});
+    const googleuser = await gapi.auth2
+      .getAuthInstance()
+      .signIn({ prompt: 'consent' });
     if (googleuser) {
       return true;
     }
@@ -56,7 +64,8 @@ export const publishTheCalenderEvent = (events) => {
     gapi.client.load('calendar', 'v3', () => {
       const batch = gapi.client.newBatch();
       events.forEach((el) => {
-        batch.add(gapi.client.calendar.events.insert({
+        batch.add(
+          gapi.client.calendar.events.insert({
             calendarId: 'primary',
             resource: {
               summary: el.title,
@@ -74,7 +83,7 @@ export const publishTheCalenderEvent = (events) => {
         );
       });
 
-      batch.then(function(){
+      batch.then(function () {
         alert('Events Added!');
       });
     });

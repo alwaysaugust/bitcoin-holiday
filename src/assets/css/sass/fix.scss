@@ -2,10 +2,11 @@
 @import '_01_mixins.scss';
 
 .calendar-dropdown-mobile {
+  position: relative;
   @include respond-below(xs) {
-    margin-left: 0px;
+    margin-left: 0;
     transform: translate(-20%,30%);
-    z-index: 5; 
+    z-index: 5;
   }
 }
 // EventComponent.js

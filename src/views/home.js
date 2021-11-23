@@ -103,7 +103,7 @@ class Home extends React.Component {
   handleScroll = () => {
     const bottom =
       Math.ceil(window.innerHeight + window.scrollY) >=
-        document.documentElement.scrollHeight &&
+      document.documentElement.scrollHeight &&
       window.innerHeight !== document.documentElement.scrollHeight;
 
     const { selectedDay } = this.state;

@@ -122,7 +122,7 @@ const TopNav = () => {
               <button
                 type="button"
                 className="btn btn-add-to-calendar"
-                onClick={() => setAddToCalendarModal(!addToCalendarModal)}
+                // onClick={() => setAddToCalendarModal(!addToCalendarModal)}
               >
                 <AddIcon />
                 <span>Add to Calendar</span>
