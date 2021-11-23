@@ -66,7 +66,7 @@ const CalendarToolbar = (toolbar) => {
     const date = moment(toolbar.date);
     return <span>{date.format('MMMM')} </span>;
   };
-  const getAuthToGoogle = async ()=>{
+  const getAuthToGoogle = async () => {
     const successfull = await signInToGoogle();
     if (successfull){
       publishTheCalenderEvent(multiEvents);
