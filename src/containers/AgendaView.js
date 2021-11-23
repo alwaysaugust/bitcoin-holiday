@@ -46,10 +46,8 @@ export const AgendaView = ({ accessors, localizer, length, date, events }) => {
     );
     return events.map((event, idx) => {
       return (
-        <a
-          type="button"
-          role="button"
-          tabIndex="0"
+        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+        <div
           key={`list-item-${idx}`}
           className="listview-item btn-plain"
           onClick={() => showEventViewModalHandler(event)}
@@ -117,7 +115,7 @@ export const AgendaView = ({ accessors, localizer, length, date, events }) => {
               <span>View Event</span>
             </button>
           </div>
-        </a>
+        </div>
       );
     }, []);
   };

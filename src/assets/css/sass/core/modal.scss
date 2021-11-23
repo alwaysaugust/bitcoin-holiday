@@ -143,7 +143,10 @@
       padding: 15px 20px;
 
       .section-header {
+        position: sticky;
+        top: 0;
         padding: 15px 0 20px 0;
+        background: var(--modal-bg-color);
       }
       .event-title {
         font-size: 1.5rem !important;

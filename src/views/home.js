@@ -101,25 +101,25 @@ class Home extends React.Component {
   }
 
   handleScroll = () => {
-    const bottom =
-      Math.ceil(window.innerHeight + window.scrollY) >=
-      document.documentElement.scrollHeight &&
-      window.innerHeight !== document.documentElement.scrollHeight;
+    // const bottom =
+    //   Math.ceil(window.innerHeight + window.scrollY) >=
+    //   document.documentElement.scrollHeight &&
+    //   window.innerHeight !== document.documentElement.scrollHeight;
 
-    const { selectedDay } = this.state;
-    if (bottom) {
-      this.setState({
-          selectedDay: new Date(
-            selectedDay.getFullYear(),
-            selectedDay.getMonth() + 1,
-            1
-          ),
-        },
-        () => {
-          window.scrollTo(0, 0);
-        }
-      );
-    }
+    // const { selectedDay } = this.state;
+    // if (bottom) {
+    //   this.setState({
+    //       selectedDay: new Date(
+    //         selectedDay.getFullYear(),
+    //         selectedDay.getMonth() + 1,
+    //         1
+    //       ),
+    //     },
+    //     () => {
+    //       window.scrollTo(0, 0);
+    //     }
+    //   );
+    // }
 
     if (
       document.body.scrollTop > 35 ||
