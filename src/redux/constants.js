@@ -1,5 +1,7 @@
 /* SETTINGS */
 export const CHANGE_LOCALE = 'CHANGE_LOCALE';
+export const ADD_EVENTS = 'ADD_EVENTS';
+export const ADD_ALL_EVENTS = 'ADD_ALL_EVENTS';
 
 /* MENU */
 export const MENU_SET_CLASSNAMES = 'MENU_SET_CLASSNAMES';

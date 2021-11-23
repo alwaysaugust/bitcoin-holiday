@@ -10,6 +10,7 @@ import AppLayout from '../layout/AppLayout';
 import CalendarToolbar from '../containers/toolbar/CalendarToolbar';
 import { AgendaView } from '../containers/AgendaView';
 import EventComponent from '../containers/EventComponent';
+import { addAllEvents, addEvents } from '../redux/actions';
 
 const Localizer = momentLocalizer(moment);
 
@@ -22,7 +23,6 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: [],
       selectedDay: new Date(),
     };
   }
@@ -36,15 +36,15 @@ class Home extends React.Component {
           .then((res) => ({
             start:
               typeof res.attributes.date === 'string'
-                ? new Date(res.attributes.date)
+                ? moment(res.attributes.date, 'YYYY-MM-DD').toDate()
                 : res.attributes.date,
             end:
               typeof res.attributes.date === 'string'
-                ? new Date(res.attributes.date)
+                ? moment(res.attributes.date, 'YYYY-MM-DD').toDate()
                 : res.attributes.date,
             date:
               typeof res.attributes.date === 'string'
-                ? new Date(res.attributes.date)
+                ? moment(res.attributes.date, 'YYYY-MM-DD').toDate()
                 : res.attributes.date,
             title: res.attributes.title,
             img: res.attributes.img,
@@ -83,10 +83,43 @@ class Home extends React.Component {
     this.setState({
       events: grouped,
     });
+    // eslint-disable-next-line react/destructuring-assignment
+    this.props.addEvents(grouped);
+    // eslint-disable-next-line react/destructuring-assignment
+    this.props.addAllEvents(events);
+
+    window.addEventListener('scroll', this.handleScroll);
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll = () => {
+    const bottom =
+      Math.ceil(window.innerHeight + window.scrollY) >=
+      document.documentElement.scrollHeight && window.innerHeight !== document.documentElement.scrollHeight;
+
+    const { selectedDay } = this.state;
+    if (bottom) {
+      this.setState({
+          selectedDay: new Date(
+            selectedDay.getFullYear(),
+            selectedDay.getMonth() + 1,
+            1
+          ),
+        },
+        () => {
+          window.scrollTo(0, 0);
+        }
+      );
+    }
+  };
+
   render() {
-    const { events, selectedDay } = this.state;
+    const { selectedDay } = this.state;
+    // eslint-disable-next-line react/destructuring-assignment
+    const events = this.props.grouped;
     return (
       <AppLayout>
         <div className="dashboard-wrapper">
@@ -128,10 +161,16 @@ class Home extends React.Component {
   }
 }
 
-const mapStateToProps = ({ settings }) => {
+const mapStateToProps = ({ settings, events }) => {
   const { locale } = settings;
-  return { locale };
+  const { grouped } = events;
+  return { locale, grouped };
 };
-const mapActionsToProps = {};
+const mapActionsToProps = (dispatch) => {
+  return {
+    addEvents: (events) => dispatch(addEvents(events)),
+    addAllEvents: (events) => dispatch(addAllEvents(events)),
+  };
+};
 
 export default connect(mapStateToProps, mapActionsToProps)(Home);

@@ -10,6 +10,14 @@ import {
   DropdownToggle,
 } from 'reactstrap';
 import TriangleDownIcon from 'components/svg/TriangleDownIcon';
+import { connect } from 'react-redux';
+import * as Add2Calendar from 'add2calendar';
+import {
+  initClient,
+  signInToGoogle,
+  publishTheCalenderEvent,
+  checkSignInStatus,
+} from '../../helpers/GoogleAPIService';
 import DarkSwitch from './DarkSwitch';
 import ShareIcon from '../../components/svg/ShareIcon';
 import AddIcon from '../../components/svg/AddIcon';
@@ -26,10 +34,12 @@ const CalendarToolbar = (toolbar) => {
   const [selectedRadio, setSelectedRadio] = useState(0);
   const [shareModal, setShareModal] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [addToCalOpen, setAddToCalOpen] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState(0);
-
+  const [multiEvents, setMultiEvents] = useState([]);
   useEffect(() => {
     setSelectedMonth(months[toolbar.date.getMonth()].value);
+    setMultiEvents(toolbar.all);
   }, [toolbar]);
 
   const goToBack = () => {
@@ -52,10 +62,29 @@ const CalendarToolbar = (toolbar) => {
       new Date(new Date().getFullYear(), selectedMonth - 1, 1)
     );
   };
-
   const label = () => {
     const date = moment(toolbar.date);
     return <span>{date.format('MMMM')} </span>;
+  };
+  const getAuthToGoogle = async ()=>{
+    const successfull = await signInToGoogle();
+    if (successfull){
+      publishTheCalenderEvent(multiEvents);
+    }
+  };
+  const addToGoogle = () => {
+    initClient(async (success) => {
+      if (success){
+        const status = await checkSignInStatus();
+        if (status) {
+          publishTheCalenderEvent(multiEvents);
+        } else {
+          getAuthToGoogle();
+        }
+      } else {
+        getAuthToGoogle();
+      }
+    });
   };
 
   return (
@@ -160,13 +189,42 @@ const CalendarToolbar = (toolbar) => {
               <ListViewIcon />
             </Button>
           </ButtonGroup>
-          <button
-            type="button"
-            className="btn btn-add-to-calendar d-none d-md-block"
+          <Dropdown
+            isOpen={addToCalOpen}
+            toggle={() => setAddToCalOpen(!addToCalOpen)}
+            className="calendar-dropdown"
           >
-            <AddIcon />
-            <span>Add to Calendar</span>
-          </button>
+            <DropdownToggle className="btn-add-to-calendar">
+              <AddIcon />
+              <span>Add to Calendar</span>
+            </DropdownToggle>
+            <DropdownMenu>
+              <div className="arrow" />
+              <div>
+                <button
+                  type="button"
+                  className="btn btn-add-to-google"
+                  onClick={addToGoogle}
+                >
+                  Add to Google Calendar
+                </button>
+                <a
+                  href={new Add2Calendar(multiEvents).getOutlookUrl()}
+                  download="download-outlook"
+                  className="btn add-to-calendar-item"
+                >
+                  Add to Outlook
+                </a>
+                <a
+                  href={new Add2Calendar(multiEvents).getICalUrl()}
+                  download="download-icalendar"
+                  className="btn add-to-calendar-item"
+                >
+                  Add to iCalendar
+                </a>
+              </div>
+            </DropdownMenu>
+          </Dropdown>
           <button
             type="button"
             className="btn btn-share d-none d-md-block"
@@ -180,4 +238,10 @@ const CalendarToolbar = (toolbar) => {
     </div>
   );
 };
-export default CalendarToolbar;
+
+const mapStateToProps = ({ events }) => {
+  const { all } = events;
+  return { all };
+};
+
+export default connect(mapStateToProps, {})(CalendarToolbar);
