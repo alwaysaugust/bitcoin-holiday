@@ -11,6 +11,10 @@ body {
       display: none;
     }
   }
+
+  &.modal-open {
+    padding: 0 !important;
+  }
 }
 
 footer.page-footer {
