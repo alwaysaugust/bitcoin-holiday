@@ -3,7 +3,7 @@
     "App.js": "/static/js/App.9f1bbd0a.chunk.js",
     "main.css": "/static/css/main.f4977b4d.chunk.css",
     "main.js": "/static/js/main.2a43552e.chunk.js",
-    "runtime-main.js": "/static/js/runtime-main.6cd44366.js",
+    "runtime-main.js": "/static/js/runtime-main.e2dc01b0.js",
     "views.css": "/static/css/views.5a4477e4.chunk.css",
     "views.js": "/static/js/views.51c89eb5.chunk.js",
     "views-error.js": "/static/js/views-error.e38df388.chunk.js",
@@ -12,7 +12,7 @@
     "static/css/6.40f9d9b6.chunk.css": "/static/css/6.40f9d9b6.chunk.css",
     "static/js/6.9f0a9272.chunk.js": "/static/js/6.9f0a9272.chunk.js",
     "static/js/7.02b6b28d.chunk.js": "/static/js/7.02b6b28d.chunk.js",
-    "static/css/8.7c6116f3.chunk.css": "/static/css/8.7c6116f3.chunk.css",
+    "static/css/8.59817f80.chunk.css": "/static/css/8.59817f80.chunk.css",
     "static/js/8.c7b3bf0f.chunk.js": "/static/js/8.c7b3bf0f.chunk.js",
     "static/js/9.b67e430f.chunk.js": "/static/js/9.b67e430f.chunk.js",
     "index.html": "/index.html",
@@ -56,7 +56,7 @@
     "static/media/theme.scss": "/static/media/mobile.6e629f8f.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.6cd44366.js",
+    "static/js/runtime-main.e2dc01b0.js",
     "static/css/6.40f9d9b6.chunk.css",
     "static/js/6.9f0a9272.chunk.js",
     "static/css/main.f4977b4d.chunk.css",
