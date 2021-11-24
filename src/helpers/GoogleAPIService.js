@@ -55,7 +55,7 @@ export const signInToGoogle = async () => {
       return true;
     }
   } catch (error) {
-    alert(error);
+    console.log(error);
   }
 };
 

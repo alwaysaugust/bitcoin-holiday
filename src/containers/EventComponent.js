@@ -71,7 +71,7 @@ const EventComponent = ({ event }) => {
                 </div>
               </div>
               <div className="rbc-title-cell">
-                <div className="d-none d-lg-block">
+                <div className="d-none d-lg-block rbc-ellipsis">
                   <span>{event.title}</span>
                 </div>
               </div>
