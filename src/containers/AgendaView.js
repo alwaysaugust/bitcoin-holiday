@@ -79,7 +79,7 @@ export const AgendaView = ({ accessors, localizer, length, date, events }) => {
                   </div>
                 </div>
               </div>
-              <div className="styles-description">{event.description}</div>
+              <div className="styles-description" dangerouslySetInnerHTML={{__html: event.description}}/>
             </>
           ) : (
             <div className="listview-multiple-wrapper">

@@ -117,6 +117,7 @@
       .event-img {
         margin-top: 33px;
         width: 100%;
+        filter: grayscale(1);
       }
       .event-org {
         margin-top: 17px;
@@ -132,6 +133,14 @@
         font-size: .6875rem;
         line-height: 22px;
         color: var(--calendar-event-description-color);
+
+        a {
+          color: var(--theme-color-1);
+          &:hover {
+            opacity: .8;
+            text-decoration: underline;
+          }
+        }
       }
     }
   }

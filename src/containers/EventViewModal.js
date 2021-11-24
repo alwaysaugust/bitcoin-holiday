@@ -62,9 +62,10 @@ const EventViewModal = ({ eventModal, setEventModal, eventDetail }) => {
                   : ''}
               </div>
               <div className="separator" />
-              <div className="event-description">
-                {el?.description ?? ''}
-              </div>
+              <div
+                className="event-description"
+                dangerouslySetInnerHTML={{ __html: el?.description ?? '' }}
+              />
             </div>
           );
         })}

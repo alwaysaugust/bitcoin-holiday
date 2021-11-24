@@ -553,6 +553,7 @@
     font-weight: 700;
     width: 287px;
     color: var(--primary-color);
+    margin: 13px 0;
 
     @include respond-below(md) {
       font-size: 1.125rem;

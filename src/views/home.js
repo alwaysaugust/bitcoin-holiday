@@ -11,6 +11,7 @@ import CalendarToolbar from '../containers/toolbar/CalendarToolbar';
 import { AgendaView } from '../containers/AgendaView';
 import EventComponent from '../containers/EventComponent';
 import { addAllEvents, addEvents } from '../redux/actions';
+import { defaultImgLink } from '../constants/defaultValues';
 
 const Localizer = momentLocalizer(moment);
 
@@ -58,7 +59,7 @@ class Home extends React.Component {
               ? (res.attributes.img.startsWith('http://') ||
                 res.attributes.img.startsWith('https://')
                 ? res.attributes.img
-                : `/events/${res.attributes.img}`) : '';
+                : `/events/${res.attributes.img}`) : defaultImgLink;
             return {
               start: date,
               end: date,

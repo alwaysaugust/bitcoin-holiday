@@ -79,7 +79,7 @@ const EventComponent = ({ event }) => {
                 <span>{moment(event.date).format('MMMM Do, YYYY')}</span>
               </div>
               <div className="d-none d-lg-block">
-                <div className="rbc-description-cell">{event.description}</div>
+                <div className="rbc-description-cell" dangerouslySetInnerHTML={{__html: event.description}} />
               </div>
               {event.isBitcoinEvent && (
                 <div className="rbc-btc-letter-cell">

@@ -21,7 +21,8 @@ export const CLIENT_ID =
   '897127869706-03r5sarg94aciafgr4p4sgs32q0v0t3n.apps.googleusercontent.com';
 export const SCOPES =
   'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/calendar.events';
-
+export const defaultImgLink =
+  'https://ciphertrace.com/wp-content/uploads/2018/11/criminal-bitcoin-how-deep-is-the-dark-side-of-the-most-widely-traded-cryptocurrency.jpg';
 export const months = [
   {
     name: 'January',
