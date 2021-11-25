@@ -34,8 +34,8 @@ const TopNav = () => {
           <div className="d-flex align-items-center navbar-left">
             <a href="http://coinkite.com/" target="_blank" rel="noreferrer">
               <span>Made with</span>
-              <img alt="CoinKite" src="/assets/img/heart.png" className="mx-1" />
-              <span>by CoinKite</span>
+              <img alt="Coinkite" src="/assets/img/heart.png" className="mx-1" />
+              <span>by Coinkite</span>
             </a>
           </div>
           <div className="navbar-right">
@@ -63,8 +63,8 @@ const TopNav = () => {
         <div className="navbar-left">
           <a href="http://coinkite.com/" target="_blank" rel="noreferrer">
             <span>Made with</span>
-            <img alt="CoinKite" src="/assets/img/heart.png" className="mx-1" />
-            <span>by CoinKite</span>
+            <img alt="Coinkite" src="/assets/img/heart.png" className="mx-1" />
+            <span>by Coinkite</span>
           </a>
         </div>
         <div className="mobile-navbar-content-wrapper">

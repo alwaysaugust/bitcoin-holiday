@@ -24,7 +24,7 @@ const data = [
   {
     id: 'coinkite-store',
     label: 'nav.coinkite-store',
-    to: `https://store.coinkite.com/store`,
+    to: `http://store.coinkite.com/promo/HOLIDAY`,
   },
 ];
 export default data;

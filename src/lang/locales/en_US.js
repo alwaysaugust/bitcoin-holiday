@@ -1,6 +1,6 @@
 module.exports = {
   /* 01.General */
-  'general.copyright': 'Made by CoinKite.',
+  'general.copyright': 'Made by Coinkite.',
 
   /* 02.Nav */
   'nav.bitcoin-security': 'Bitcoin Security',
