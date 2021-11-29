@@ -32,7 +32,8 @@ const TopNav = () => {
       <nav className="navbar  d-none d-md-block">
         <div className="navbar-content">
           <div className="d-flex align-items-center navbar-left">
-            <a href="http://coinkite.com/" target="_blank" rel="noreferrer">
+            {/* eslint-disable react/jsx-no-target-blank */}
+            <a href="http://coinkite.com/" target="_blank">
               <span>Made with</span>
               <img alt="Coinkite" src="/assets/img/heart.png" className="mx-1" />
               <span>by Coinkite</span>
@@ -47,7 +48,7 @@ const TopNav = () => {
                       <a
                         key={item.id}
                         href={item.to}
-                        rel="noopener noreferrer"
+                        rel="noopener"
                         target="_blank"
                       >
                         <IntlMessages id={item.label} />
@@ -61,7 +62,7 @@ const TopNav = () => {
       </nav>
       <nav className="mobile-navbar d-block d-md-none">
         <div className="navbar-left">
-          <a href="http://coinkite.com/" target="_blank" rel="noreferrer">
+          <a href="http://coinkite.com/" target="_blank">
             <span>Made with</span>
             <img alt="Coinkite" src="/assets/img/heart.png" className="mx-1" />
             <span>by Coinkite</span>
@@ -108,7 +109,7 @@ const TopNav = () => {
                         <a
                           key={item.id}
                           href={item.to}
-                          rel="noopener noreferrer"
+                          rel="noopener"
                           target="_blank"
                         >
                           <IntlMessages id={item.label} />

@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect,
 } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import AppLocale from './lang';
@@ -13,10 +12,6 @@ import { getDirection } from './helpers/Utils';
 
 const ViewHome = React.lazy(() =>
   import(/* webpackChunkName: "views" */ './views/home')
-);
-
-const ViewError = React.lazy(() =>
-  import(/* webpackChunkName: "views-error" */ './views/error')
 );
 
 class App extends React.Component {
@@ -48,16 +43,10 @@ class App extends React.Component {
               <Router>
                 <Switch>
                   <Route
-                    path="/error"
-                    exact
-                    render={(props) => <ViewError {...props} />}
-                  />
-                  <Route
                     path="/"
                     exact
                     render={(props) => <ViewHome {...props} />}
                   />
-                  <Redirect to="/error" />
                 </Switch>
               </Router>
             </Suspense>
